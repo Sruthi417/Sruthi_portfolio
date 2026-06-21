@@ -86,7 +86,7 @@ const Hero = () => {
             <span className="hero__pin" aria-hidden="true">
               📍
             </span>
-            BENGALURU, KA
+            Kozhikode, KE
           </span>
         </p>
         <p className="hero__motto">CREATE · CONSUME</p>
