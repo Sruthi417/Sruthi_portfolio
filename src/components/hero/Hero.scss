@@ -84,6 +84,15 @@
   &__wave {
     font-size: 1.1em;
     line-height: 1;
+    display: inline-block;
+    transform-origin: 70% 80%; /* pivot near the wrist */
+    animation: hero-wave 2.6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__wave {
+      animation: none;
+    }
   }
 
   &__title {
@@ -199,6 +208,35 @@
 
   &__motto {
     letter-spacing: 0.12em;
+  }
+}
+
+/* 👋 waves "hi" a few times, then rests, then waves again */
+@keyframes hero-wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(14deg);
+  }
+  10% {
+    transform: rotate(-8deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  /* 30%–100% — hold still (the pause between waves) */
+  100% {
+    transform: rotate(0deg);
   }
 }
 
