@@ -1,0 +1,89 @@
+.summary {
+  position: relative;
+  background: #ffffff;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  /* top breathing room + generous bottom room so the last words can scroll
+     high enough to finish revealing */
+  padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 6vw, 6rem) 32vh;
+}
+
+/* faint divider near the top with a "+" notch centred on it */
+.summary__rule {
+  position: relative;
+  border-top: 1px solid rgba(20, 35, 60, 0.1);
+}
+
+.summary__plus {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  padding: 0 0.6rem;
+  background: #ffffff; /* mask the line behind the symbol */
+  color: #9aa3b2;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* big gap below the rule, then the label + text sit in the lower-middle */
+.summary__body {
+  margin-top: 26vh;
+  display: flex;
+  align-items: flex-start; /* label lines up with the top of the text */
+  justify-content: space-between;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+/* "✦ WHAT I DO" — far left */
+.summary__label {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.4em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #5b6472;
+}
+
+.summary__diamond {
+  color: #1d6fff;
+  font-size: 0.9em;
+}
+
+/* the reveal paragraph — right column */
+.summary__text {
+  max-width: min(60%, 24ch);
+  margin: 0;
+  text-align: left;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 3.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
+
+.summary__word {
+  /* --fill (0 → 1) is written per word from JS as you scroll */
+  /* grey → black colour interpolation */
+  color: color-mix(in srgb, #111317 calc(var(--fill, 0) * 100%), #c4c9d2);
+  /* blurry while grey, snaps sharp as it turns black */
+  filter: blur(calc((1 - var(--fill, 0)) * 3px));
+  transition: color 0.12s linear, filter 0.12s linear;
+}
+
+/* "understand" — blue brush script instead of black */
+.summary__word--accent {
+  font-family: var(--font-caveat), cursive;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.12em; /* compensate for the script's smaller x-height */
+  color: color-mix(in srgb, #1d6fff calc(var(--fill, 0) * 100%), #c4c9d2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .summary__word {
+    filter: none;
+    transition: none;
+  }
+}

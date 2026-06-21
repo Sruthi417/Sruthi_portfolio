@@ -32,6 +32,20 @@
     z-index: 1;
     user-select: none;
     pointer-events: none;
+    /* fade the image's own bottom so the figure dissolves into a soft fog
+       instead of ending on a hard edge */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 80%,
+      rgba(0, 0, 0, 0.5) 91%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 80%,
+      rgba(0, 0, 0, 0.5) 91%,
+      transparent 100%
+    );
   }
 
   /* z-2 — bottom white fog */
