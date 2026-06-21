@@ -1,0 +1,107 @@
+.navbar {
+  position: fixed;
+  top: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+
+  /* ---- the pill ---- */
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.88rem 1.5rem 0.88rem 1.5rem;
+    border-radius: 999px;
+    /* frosted glass */
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 6px 26px rgba(40, 60, 90, 0.15);
+    transition: padding 0.45s ease;
+  }
+
+  &__brand {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: #1b1b1f;
+    white-space: nowrap;
+  }
+
+  /* ---- nav links ---- */
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0 0 0 2.5rem;
+    padding: 0;
+    margin-left: 5rem;
+    /* collapsible: animate width + fade for the smooth open/close */
+    max-width: 30rem;
+    overflow: hidden;
+    opacity: 1;
+    transition: max-width 0.45s ease, opacity 0.35s ease, margin 0.45s ease;
+
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1b1b1f;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  /* ---- the "•••" shown when collapsed ---- */
+  &__dots {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 0;
+    margin-left: 0;
+    opacity: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #1b1b1f;
+    white-space: nowrap;
+    transition: max-width 0.45s ease, opacity 0.35s ease, margin 0.45s ease;
+  }
+
+  /* ===== compact state (second section onwards) ===== */
+  &--compact {
+    .navbar__links {
+      max-width: 0;
+      margin-left: 0;
+      opacity: 0;
+    }
+
+    .navbar__dots {
+      max-width: 3rem;
+      margin-left: 1.1rem;
+      opacity: 1;
+    }
+
+    /* hover re-expands to the full navbar, then collapses again on leave */
+    .navbar__pill:hover {
+      .navbar__links {
+        max-width: 30rem;
+        margin-left: 2.5rem;
+        opacity: 1;
+      }
+
+      .navbar__dots {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+      }
+    }
+  }
+}
