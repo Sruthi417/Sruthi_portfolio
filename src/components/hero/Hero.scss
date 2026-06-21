@@ -249,20 +249,80 @@
     &__content {
       max-width: 78%;
     }
-  }
 
+     
+
+  /* ===== below 768px: portrait layout, like the reference ===== */
   @media (max-width: 768px) {
+    /* shorter fog so the figure's feet aren't washed out */
+    --fog-height: 170px;
+
     &__content {
       max-width: 90%;
     }
+
+    /* a little larger so the titles fill the portrait column */
+    &__title-main {
+      font-size: clamp(3.75rem, 15vw, 10rem);
+    }
+
+    &__title-script {
+      font-size: clamp(4rem, 19vw, 14rem);
+    }
+
+    /* figure drops to the bottom-right corner and keeps its NATURAL aspect
+       ratio (width-only, auto height) instead of the desktop stretch */
+    &__figure {
+      top: auto;
+      bottom: 0;
+      height: auto;
+      width: 70%;
+      /* fog handles the bottom fade now, so drop the image mask */
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+
+  @media(max-width:600px){
+     &__content {
+      max-width: 60%;
+    }
+     
+     &__figure {
+      top: auto;
+      bottom: 0;
+      height: 45%;
+      width: auto;
+    }
+
+    
+  }
+
+   @media(max-width:530px){
+     &__content {
+      margin-top: -3rem;
+    }
+     
+    &__title-script {
+      margin-top: -2rem;
+    }
+
+    
   }
 
   @media (max-width: 480px) {
-    /* drop the figure a touch so the titles sit on clearer sky */
-    --figure-top: 18%;
-
     &__content {
-      max-width: 94%;
+      max-width: 68%;
+    }
+     
+
+    /* give the figure a bit more presence on the narrowest screens */
+    &__figure {
+      width: auto;
+    }
+       
+    &__title-script {
+      margin-top: -1.7rem;
     }
 
     /* keep the bottom row on one line on tiny screens */
@@ -275,6 +335,20 @@
       gap: 0.4rem;
     }
   }
+
+    @media (max-width: 420px) {
+     &__title-script {
+      margin-top: -1.4rem;
+    }
+    }
+    @media (max-width: 380px) {
+      &__content {
+      max-width: 68%;
+    }
+     &__title-script {
+      margin-top: -1rem;
+    }
+    }
 }
 
 /* 👋 waves "hi" a few times, then rests, then waves again */
@@ -315,4 +389,5 @@
   50% {
     transform: translateY(-1.5rem);
   }
+}
 }

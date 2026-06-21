@@ -79,18 +79,7 @@ const Hero = () => {
       </div>
 
       {/* z-3 — bottom meta row */}
-      <div className="hero__meta">
-        <p className="hero__based">
-          <span className="hero__based-label">BASED IN</span>
-          <span className="hero__based-place">
-            <span className="hero__pin" aria-hidden="true">
-              📍
-            </span>
-            Kozhikode, KE
-          </span>
-        </p>
-        <p className="hero__motto">CREATE · CONSUME</p>
-      </div>
+   
     </section>
   );
 };
