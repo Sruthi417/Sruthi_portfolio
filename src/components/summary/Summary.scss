@@ -33,7 +33,7 @@
 /* big gap below the rule, then the label + text sit in the lower-middle */
 .summary__body {
   //margin-top: 26vh;
-  margin-top: 8rem;
+  margin-top: 9rem;
   display: flex;
   align-items: flex-start; /* label lines up with the top of the text */
   justify-content: space-between;
@@ -49,8 +49,9 @@
   margin-top: 0.4em;
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   color: #5b6472;
+  margin-left: 10px;
 }
 
 .summary__diamond {

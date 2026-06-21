@@ -19,7 +19,7 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 6px 26px rgba(40, 60, 90, 0.15);
-    transition: padding 0.45s ease;
+    transition: padding 0.75s cubic-bezier(0.76, 0, 0.24, 1);
   }
 
   &__brand {
@@ -36,14 +36,16 @@
     align-items: center;
     gap: 1rem;
     list-style: none;
-    margin: 0 0 0 2.5rem;
+    margin: 0 0 0 4rem;
     padding: 0;
-    margin-left: 5rem;
-    /* collapsible: animate width + fade for the smooth open/close */
-    max-width: 30rem;
+    /* collapsible: animate width + fade for the smooth open/close.
+       max-width sits just above the real content width so the whole
+       duration maps to visible motion (no snap-then-wait). */
+    max-width: 16rem;
     overflow: hidden;
     opacity: 1;
-    transition: max-width 0.45s ease, opacity 0.35s ease, margin 0.45s ease;
+    transition: max-width 0.75s cubic-bezier(0.76, 0, 0.24, 1),
+      opacity 0.55s ease, margin 0.75s cubic-bezier(0.76, 0, 0.24, 1);
 
     a {
       display: inline-block;
@@ -72,7 +74,8 @@
     letter-spacing: 0.05em;
     color: #1b1b1f;
     white-space: nowrap;
-    transition: max-width 0.45s ease, opacity 0.35s ease, margin 0.45s ease;
+    transition: max-width 0.75s cubic-bezier(0.76, 0, 0.24, 1),
+      opacity 0.55s ease, margin 0.75s cubic-bezier(0.76, 0, 0.24, 1);
   }
 
   /* ===== compact state (second section onwards) ===== */
@@ -92,8 +95,8 @@
     /* hover re-expands to the full navbar, then collapses again on leave */
     .navbar__pill:hover {
       .navbar__links {
-        max-width: 30rem;
-        margin-left: 2.5rem;
+        max-width: 16rem;
+        margin-left: 4rem;
         opacity: 1;
       }
 
