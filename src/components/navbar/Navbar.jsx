@@ -1,19 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Navbar.scss";
 
 const Navbar = () => {
-  // `compact` = we've scrolled past the hero into the next section.
+  // `compact` = collapsed to "SRUTHI •••". Hover re-expands it (handled in CSS).
   const [compact, setCompact] = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
+    lastY.current = window.scrollY;
+
     const onScroll = () => {
-      // shrink once most of the first (hero) section has scrolled away
-      setCompact(window.scrollY > window.innerHeight * 0.7);
+      const y = window.scrollY;
+      // scrolling down (past a little buffer) collapses; scrolling up expands
+      if (y > lastY.current && y > 80) {
+        setCompact(true);
+      } else if (y < lastY.current) {
+        setCompact(false);
+      }
+      lastY.current = y;
     };
 
-    onScroll(); // sync on mount (e.g. refresh while scrolled)
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);

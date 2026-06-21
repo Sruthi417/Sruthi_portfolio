@@ -13,23 +13,32 @@ const ACCENT = "understand";
 const WORDS = TEXT.split(" ");
 
 const Summary = () => {
+  const textRef = useRef(null);
   // one DOM ref per word so we can update its --fill without re-rendering
   const wordRefs = useRef([]);
 
   useEffect(() => {
     const reveal = () => {
-      const vh = window.innerHeight;
-      // words below `start` (lower on screen) are grey; once they rise above
-      // `end` they're fully black. Between, they fade word-by-word as you scroll.
-      const start = vh * 0.82;
-      const end = vh * 0.5;
+      const el = textRef.current;
+      if (!el) return;
 
-      for (const el of wordRefs.current) {
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top;
-        const fill = Math.min(1, Math.max(0, (start - top) / (start - end)));
-        el.style.setProperty("--fill", fill.toFixed(3));
-      }
+      const vh = window.innerHeight;
+      const top = el.getBoundingClientRect().top;
+      // overall reveal progress as the paragraph scrolls up the viewport:
+      // starts when its top hits 80% vh, completes by the time it hits 20% vh
+      const start = vh * 0.9;
+      const end = vh * 0.2;
+      const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
+
+      // map progress onto the word list so they light up one at a time, in
+      // reading order (+ a small tail so the last word lands before the end)
+      const lit = progress * (WORDS.length + 2);
+
+      wordRefs.current.forEach((w, i) => {
+        if (!w) return;
+        const fill = Math.min(1, Math.max(0, lit - i));
+        w.style.setProperty("--fill", fill.toFixed(3));
+      });
     };
 
     reveal(); // sync on mount
@@ -52,7 +61,7 @@ const Summary = () => {
           <span className="summary__diamond">✦</span> WHAT I DO
         </span>
 
-        <p className="summary__text">
+        <p className="summary__text" ref={textRef}>
           {WORDS.map((word, i) => (
             <span
               key={i}

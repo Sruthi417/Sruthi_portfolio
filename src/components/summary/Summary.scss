@@ -3,14 +3,19 @@
   background: #ffffff;
   font-family: var(--font-poppins), system-ui, sans-serif;
   /* top breathing room + generous bottom room so the last words can scroll
-     high enough to finish revealing */
-  padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 6vw, 6rem) 32vh;
+     high enough to finish revealing.
+     horizontal padding matches the hero's content inset, so the label lines
+     up under "BASED IN" and the text's right edge reaches "CONSUME". */
+  padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 4.5vw, 5.5rem) 32vh;
 }
 
 /* faint divider near the top with a "+" notch centred on it */
 .summary__rule {
   position: relative;
   border-top: 1px solid rgba(20, 35, 60, 0.1);
+  margin-top: -30px;
+  /* spans the full content width, which now matches the hero inset, so the
+     line already reaches the "B" of BASED and the "E" of CONSUME */
 }
 
 .summary__plus {
@@ -27,7 +32,8 @@
 
 /* big gap below the rule, then the label + text sit in the lower-middle */
 .summary__body {
-  margin-top: 26vh;
+  //margin-top: 26vh;
+  margin-top: 8rem;
   display: flex;
   align-items: flex-start; /* label lines up with the top of the text */
   justify-content: space-between;
@@ -54,11 +60,13 @@
 
 /* the reveal paragraph — right column */
 .summary__text {
-  max-width: min(60%, 24ch);
+  max-width: 900px;
   margin: 0;
+  /* breathing space before each line begins, on the left */
+  padding-left: clamp(1.5rem, 4vw, 4rem);
   text-align: left;
-  font-weight: 700;
-  font-size: clamp(1.8rem, 3.6vw, 3.5rem);
+  font-weight: 600;
+  font-size: 48px;
   line-height: 1.16;
   letter-spacing: -0.01em;
 }
@@ -66,9 +74,9 @@
 .summary__word {
   /* --fill (0 → 1) is written per word from JS as you scroll */
   /* grey → black colour interpolation */
-  color: color-mix(in srgb, #111317 calc(var(--fill, 0) * 100%), #c4c9d2);
-  /* blurry while grey, snaps sharp as it turns black */
-  filter: blur(calc((1 - var(--fill, 0)) * 3px));
+  color: color-mix(in srgb, #111317 calc(var(--fill, 0) * 100%), #aeb4be);
+  /* slightly soft while grey, snaps sharp as it turns black */
+  filter: blur(calc((1 - var(--fill, 0)) * 1.2px));
   transition: color 0.12s linear, filter 0.12s linear;
 }
 
@@ -78,7 +86,7 @@
   font-style: italic;
   font-weight: 700;
   font-size: 1.12em; /* compensate for the script's smaller x-height */
-  color: color-mix(in srgb, #1d6fff calc(var(--fill, 0) * 100%), #c4c9d2);
+  color: color-mix(in srgb, #1d6fff calc(var(--fill, 0) * 100%), #aeb4be);
 }
 
 @media (prefers-reduced-motion: reduce) {
