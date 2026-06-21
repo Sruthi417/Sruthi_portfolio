@@ -54,6 +54,43 @@ const Hero = () => {
 
       {/* z-2 — white fog fading the wall into white at the bottom */}
       <div className="hero__fog" />
+
+      {/* z-3 — foreground copy */}
+      <div className="hero__content">
+        <p className="hero__greeting">
+          <span className="hero__wave" aria-hidden="true">
+            👋
+          </span>{" "}
+          Hey, I&apos;m <strong>Sruthi</strong>
+        </p>
+
+        <h1 className="hero__title">
+          <span className="hero__title-main">product</span>
+          <span className="hero__title-script">engineer</span>
+        </h1>
+
+        <p className="hero__tagline">
+          Building consumer &amp; enterprise products @{" "}
+          <span className="hero__company">
+            <span className="hero__company-logo" aria-hidden="true" />
+            mygate
+          </span>
+        </p>
+      </div>
+
+      {/* z-3 — bottom meta row */}
+      <div className="hero__meta">
+        <p className="hero__based">
+          <span className="hero__based-label">BASED IN</span>
+          <span className="hero__based-place">
+            <span className="hero__pin" aria-hidden="true">
+              📍
+            </span>
+            BENGALURU, KA
+          </span>
+        </p>
+        <p className="hero__motto">CREATE · CONSUME</p>
+      </div>
     </section>
   );
 };
