@@ -1,9 +1,10 @@
 .hero {
   /* ---- tunables (nudge these to match the reference) ---- */
-  --figure-width: 78%;   /* herome.png width relative to the viewport      */
+  --figure-height: 79%; 
+  --figure-width: 75%;   /* herome.png width relative to the viewport      */
   --figure-right: 0%;    /* horizontal offset from the right edge          */
   --figure-top: 14%;     /* top edge of the figure, from the top           */
-  --fog-height: 34%;     /* how far up the white fog reaches               */
+  --fog-height: 170px;   /* how far up the white fade reaches              */
 
   position: relative;
   width: 100%;
@@ -27,7 +28,7 @@
     right: var(--figure-right);
     top: var(--figure-top);
     width: var(--figure-width);
-    height: auto;
+    height:  var(--figure-height);
     z-index: 1;
     user-select: none;
     pointer-events: none;
@@ -43,10 +44,9 @@
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.35) 40%,
-      rgba(255, 255, 255, 0.75) 65%,
-      rgba(255, 255, 255, 0.95) 85%,
-      #ffffff 100%
+      rgba(255, 255, 255, 0.7) 40%,
+      rgba(255, 255, 255, 0.95) 65%,
+      #ffffff 85%
     );
   }
 }
