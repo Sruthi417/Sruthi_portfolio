@@ -88,8 +88,9 @@
     margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
     font-size: clamp(1rem, 1.7vw, 1.6rem);
     font-weight: 500;
-    margin-top: -7rem;
-    
+    /* pulls the block up; eases off on small screens */
+    margin-top: clamp(-7rem, -8vw, -2rem);
+
     strong {
       font-weight: 700;
     }
@@ -119,22 +120,25 @@
   &__title-main {
     display: block;
     font-family: var(--font-poppins), system-ui, sans-serif;
-    font-size: 10rem;
+    /* fluid: scales with viewport, capped at the desktop size */
+    font-size: clamp(3.75rem, 13vw, 10rem);
     font-weight: 500;
-    letter-spacing: -0.5rem;
+    /* em-based so the tracking scales with the font instead of crushing
+       small sizes */
+    letter-spacing: -0.05em;
     margin-top: -10px;
   }
 
   /* "designer" — brush script, nudged up so it overlaps "product" */
   &__title-script {
     display: block;
-    margin-left: 14rem;
-    margin-top: -6rem;
+    margin-left: clamp(1rem, 11vw, 14rem);
+    margin-top: clamp(-6rem, -7vw, -2.5rem);
     font-family: var(--font-caveat), cursive;
     font-weight: 400;
-    font-size: 14rem;
+    font-size: clamp(4rem, 17vw, 14rem);
     line-height: 0.9;
-    letter-spacing: -0.7rem;
+    letter-spacing: -0.05em;
     /* slow, endless float — rises up then eases back to rest */
     animation: hero-float 4s ease-in-out infinite;
     will-change: transform;
@@ -151,8 +155,8 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 25px;
-    font-size: 20px;
+    margin-top: clamp(1rem, 2vw, 1.6rem);
+    font-size: clamp(0.95rem, 2.4vw, 1.25rem);
     font-weight: 400;
     margin-left: 10px;
   }
@@ -161,7 +165,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3em;
-    font-size: 20px;
+    font-size: clamp(0.95rem, 2.4vw, 1.25rem);
     /* sized in em so the pill scales with the tagline font-size */
     padding: 0.1em 0.3em 0.1em 0.2em;
     border-radius: 999px;
@@ -222,6 +226,39 @@
 
   &__motto {
     letter-spacing: 0.12em;
+  }
+
+  /* ===== responsive layout shifts (type already scales via clamp above) ===== */
+  /* widen the text column as the screen narrows so the titles get more room */
+  @media (max-width: 1024px) {
+    &__content {
+      max-width: 78%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__content {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* drop the figure a touch so the titles sit on clearer sky */
+    --figure-top: 18%;
+
+    &__content {
+      max-width: 94%;
+    }
+
+    /* keep the bottom row on one line on tiny screens */
+    &__meta {
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+    }
+
+    &__based {
+      gap: 0.4rem;
+    }
   }
 }
 
