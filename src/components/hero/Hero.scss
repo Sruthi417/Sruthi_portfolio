@@ -1,0 +1,52 @@
+.hero {
+  /* ---- tunables (nudge these to match the reference) ---- */
+  --figure-width: 78%;   /* herome.png width relative to the viewport      */
+  --figure-right: 0%;    /* horizontal offset from the right edge          */
+  --figure-top: 14%;     /* top edge of the figure, from the top           */
+  --fog-height: 34%;     /* how far up the white fog reaches               */
+
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #bfe0ff; /* sky fallback while the video loads */
+
+  /* z-0 — full-bleed looping video */
+  &__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  /* z-1 — figure + wall, top-anchored to the right so the wall hangs into the fog */
+  &__figure {
+    position: absolute;
+    right: var(--figure-right);
+    top: var(--figure-top);
+    width: var(--figure-width);
+    height: auto;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* z-2 — bottom white fog */
+  &__fog {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: var(--fog-height);
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.35) 40%,
+      rgba(255, 255, 255, 0.75) 65%,
+      rgba(255, 255, 255, 0.95) 85%,
+      #ffffff 100%
+    );
+  }
+}

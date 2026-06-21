@@ -3,7 +3,11 @@ const sharp = require("sharp");
 
 (async () => {
   const SRC = "public/herome.png"; // original figure + wall, sky transparent
-  const TALL = "public/herome-tall.png"; // wall extended downward
+  // wall layer is inpainted from the SAME source as the mask (herome-tall.png
+  // was an earlier intermediate that no longer ships); keeping it == SRC means
+  // wall.png and girl.png share one coordinate system, so the girl can be
+  // scaled about her seat and stay glued to the wall edge.
+  const TALL = SRC;
 
   const { data, info } = await sharp(SRC)
     .ensureAlpha()
