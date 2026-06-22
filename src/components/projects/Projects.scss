@@ -148,6 +148,10 @@
   border-radius: 30px;
   overflow: hidden;
   background: #bfe0ff; /* sky fallback while the video loads */
+  /* GSAP scales this back as the next card rises — origin near the top so the
+     card's peeking top edge stays put while the sides inset (recede) */
+  transform-origin: center 30%;
+  will-change: transform;
 }
 
 .project__bg {

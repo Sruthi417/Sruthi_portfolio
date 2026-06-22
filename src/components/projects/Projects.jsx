@@ -77,30 +77,65 @@ const Projects = () => {
     return () => obs.disconnect();
   }, []);
 
-  // ---- smooth scroll (Lenis) so the cards slide and stack buttery-smooth ----
+  // ---- smooth scroll (Lenis) + receding-deck depth (GSAP ScrollTrigger) ----
   useEffect(() => {
     let cancelled = false;
-    let lenis;
-    let rafId;
+    let cleanup = () => {};
 
     (async () => {
-      const Lenis = (await import("lenis")).default;
+      const [{ gsap }, { ScrollTrigger }, Lenis] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+        import("lenis").then((m) => m.default),
+      ]);
       if (cancelled) return;
 
-      // Lenis smooths the NATIVE scroll, so window scroll (navbar + summary)
-      // keeps working. The cards stack via CSS `position: sticky`.
-      lenis = new Lenis();
-      const raf = (time) => {
-        lenis.raf(time);
-        rafId = requestAnimationFrame(raf);
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Lenis smooths the NATIVE scroll (navbar + summary keep working).
+      const lenis = new Lenis();
+      lenis.on("scroll", ScrollTrigger.update);
+      const raf = (time) => lenis.raf(time * 1000);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+
+      // Cards pin/stack via CSS sticky. As the NEXT card rises over a card,
+      // scrub that card's frame smaller so it appears to recede behind —
+      // inset from the sides + top, like a real deck stacking up.
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray(".project");
+        cards.forEach((card, i) => {
+          if (i === cards.length - 1) return;
+          const frame = card.querySelector(".project__frame");
+          gsap.fromTo(
+            frame,
+            { scale: 1 },
+            {
+              scale: 0.92,
+              ease: "none",
+              scrollTrigger: {
+                trigger: cards[i + 1],
+                start: "top bottom", // next card just enters from below
+                end: "top top", // next card has fully risen to the top
+                scrub: true,
+              },
+            }
+          );
+        });
+      }, stackRef);
+
+      ScrollTrigger.refresh();
+
+      cleanup = () => {
+        gsap.ticker.remove(raf);
+        lenis.destroy();
+        ctx.revert();
       };
-      rafId = requestAnimationFrame(raf);
     })();
 
     return () => {
       cancelled = true;
-      if (rafId) cancelAnimationFrame(rafId);
-      lenis?.destroy();
+      cleanup();
     };
   }, []);
 
