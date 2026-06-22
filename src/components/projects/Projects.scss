@@ -122,3 +122,225 @@
     transform: translateY(0);
   }
 }
+
+/* ===================================================================
+   Project showcase — full-viewport video card with a glass squircle
+   =================================================================== */
+.project {
+  position: relative;
+  height: 100dvh;
+  background: #ffffff;
+  margin-top: 5rem;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+/* full-bleed frame (clips the content to the section bounds) */
+.project__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #bfe0ff; /* sky fallback while the video loads */
+}
+
+.project__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* phone mockup — wider and flush to the screen edge */
+.project__image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: -6rem;
+  
+  height: 57rem;
+  width: auto;
+  max-width: 58%;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ---- glass squircle card (left) ---- */
+.project__card {
+  position: absolute;
+  left: clamp(1.5rem, 4vw, 4rem);
+  margin-left: 2rem;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: none; /* hidden in favour of the custom arrow follower */
+ // width: min(46%, 34rem);
+ width: 45rem;
+  padding: clamp(1.5rem, 2.4vw, 2.5rem);
+  border-radius: clamp(20px, 2vw, 32px);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 70px rgba(20, 50, 90, 0.2);
+}
+
+.project__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* the arrow circle that trails the pointer inside the card */
+.project__cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* starts off-card; JS sets the real transform on mouse move */
+  transform: translate(-100px, -100px) translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(3.2rem, 4vw, 4.4rem);
+  height: clamp(3.2rem, 4vw, 4.4rem);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none; /* never blocks clicks/hover on the button */
+  opacity: 0;
+  z-index: 5; /* rides on top of everything in the card */
+  transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease,
+    background 0.2s ease, transform 0.12s ease-out;
+
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+/* visible only while the pointer is over the card */
+.project__cursor--on {
+  opacity: 1;
+}
+
+/* grows over the "View Case Study" button (second reference) */
+.project__cursor--active {
+  width: clamp(4.5rem, 6vw, 6rem);
+  height: clamp(4.5rem, 6vw, 6rem);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.project__title {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.6vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
+}
+
+.project__tag {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.project__desc {
+  margin: clamp(1.25rem, 2.4vw, 1.75rem) 0 0;
+  max-width: 34ch;
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* white pill CTA with a black circular arrow */
+.project__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
+  padding: 0.4rem 1.6rem 0.4rem 0.4rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111317;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.project__cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: #111317;
+  color: #fff;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+/* ---- stack on small screens ---- */
+@media (max-width: 820px) {
+  .project {
+    height: auto;
+  }
+
+  .project__frame {
+    height: auto;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .project__card {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    margin: clamp(1.5rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem) 0;
+  }
+
+  .project__image {
+    position: relative;
+    right: auto;
+    height: auto;
+    width: 78%;
+    max-width: 78%;
+    margin: clamp(1.5rem, 5vw, 2.5rem) auto 0;
+  }
+}
