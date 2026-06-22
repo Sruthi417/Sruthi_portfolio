@@ -100,8 +100,9 @@ const Projects = () => {
       gsap.ticker.lagSmoothing(0);
 
       // Cards pin/stack via CSS sticky. As the NEXT card rises over a card,
-      // scrub that card's frame smaller so it appears to recede behind —
-      // inset from the sides + top, like a real deck stacking up.
+      // scrub that card's frame smaller (origin: top) so it stays pinned at the
+      // top, peeks ABOVE the new card, and insets from the sides — a real deck
+      // building up, with each new card resting OUTSIDE the previous one.
       const ctx = gsap.context(() => {
         const cards = gsap.utils.toArray(".project");
         cards.forEach((card, i) => {
@@ -111,12 +112,14 @@ const Projects = () => {
             frame,
             { scale: 1 },
             {
-              scale: 0.92,
+              scale: 0.9,
               ease: "none",
               scrollTrigger: {
                 trigger: cards[i + 1],
                 start: "top bottom", // next card just enters from below
-                end: "top top", // next card has fully risen to the top
+                // finish receding when the next card reaches its pinned stop
+                // (its sticky offset), not the very top of the viewport
+                end: "top top",
                 scrub: true,
               },
             }

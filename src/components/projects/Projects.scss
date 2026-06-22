@@ -131,26 +131,33 @@
   margin-top: 4rem;
 }
 
-/* each card pins (sticky) and the next one stacks over it, offset down a
-   little so the previous card's rounded top edge peeks out */
+/* each card pins (sticky) and the next one stacks OVER it. every card stops a
+   step lower than the one before (--i * step), so each previous card's rounded
+   top edge stays pinned and peeks out ABOVE the new card — the new card rests
+   on top of the deck, never inside it. the base offset gives the first card a
+   small gap from the very top (the "padding block" when the 2nd card arrives). */
 .project {
   position: sticky;
-  top: calc(var(--i, 0) * 1.4rem);
+  top: calc(1.5rem + var(--i, 0) * 1.75rem);
   height: 100dvh;
   font-family: var(--font-poppins), system-ui, sans-serif;
 }
 
-/* full-bleed frame (clips the content + rounds the corners) */
+/* the card frame (clips the content + rounds the corners). a little shorter
+   than the viewport so a small margin shows below — reads as a distinct card,
+   and leaves room for the stacked offset above without overflowing. */
 .project__frame {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: calc(100dvh - 3rem);
   border-radius: 30px;
   overflow: hidden;
   background: #bfe0ff; /* sky fallback while the video loads */
-  /* GSAP scales this back as the next card rises — origin near the top so the
-     card's peeking top edge stays put while the sides inset (recede) */
-  transform-origin: center 30%;
+  /* GSAP scales this back as the NEXT card rises. origin pinned to the TOP so
+     the receding card keeps its top edge in place (peeking above the new card)
+     and shrinks inward from the sides — that side inset is the "inline padding"
+     that grows on the previous card as the next one slides up over it. */
+  transform-origin: center top;
   will-change: transform;
 }
 
