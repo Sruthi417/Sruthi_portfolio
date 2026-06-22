@@ -124,23 +124,28 @@
 }
 
 /* ===================================================================
-   Project showcase — full-viewport video card with a glass squircle
+   Project showcase — full-viewport video cards that stack on scroll
    =================================================================== */
-.project {
+.projects__stack {
   position: relative;
-  height: 100dvh;
-  background: #ffffff;
+  margin-top: 4rem;
+}
 
-  margin-top: 5rem;
+/* each card pins (sticky) and the next one stacks over it, offset down a
+   little so the previous card's rounded top edge peeks out */
+.project {
+  position: sticky;
+  top: calc(var(--i, 0) * 1.4rem);
+  height: 100dvh;
   font-family: var(--font-poppins), system-ui, sans-serif;
 }
 
-/* full-bleed frame (clips the content to the section bounds) */
+/* full-bleed frame (clips the content + rounds the corners) */
 .project__frame {
   position: relative;
   width: 100%;
-    border-radius: 30px;
   height: 100%;
+  border-radius: 30px;
   overflow: hidden;
   background: #bfe0ff; /* sky fallback while the video loads */
 }
