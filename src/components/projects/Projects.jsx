@@ -171,7 +171,7 @@ const Projects = () => {
                   <path d="m13 6 6 6-6 6" />
                 </svg>
               </span>
-              View Case Study
+              <span className="project__cta-label">View Case Study</span>
             </a>
           </div>
         </div>
