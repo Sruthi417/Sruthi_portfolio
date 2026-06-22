@@ -1,0 +1,74 @@
+.projects {
+  position: relative;
+  background: #ffffff;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+ padding-top: 4.5rem;
+
+
+/* faint divider near the top with a "+" notch centred on it
+   (identical to the summary section's separator) */
+.projects__rule {
+  position: relative;
+  border-top: 1px solid rgba(20, 35, 60, 0.1);
+  margin-top: -30px;
+  /* inset the same as the summary section so the line is the same length
+     (this section has no horizontal padding of its own) */
+  margin-inline: clamp(1.5rem, 4.5vw, 5.5rem);
+}
+
+.projects__plus {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  padding: 0 0.6rem;
+  background: #ffffff; /* mask the line behind the symbol */
+  color: #9aa3b2;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ---- centred header ---- */
+.projects__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: clamp(4rem, 12vh, 3rem);
+}
+
+.projects__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+ 
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #5b6472;
+}
+
+.projects__diamond {
+  color: #1d6fff;
+  font-size: 1.5em;
+}
+
+.projects__title {
+  margin: clamp(1.25rem, 3vh, 2rem) 0 0;
+  margin-top: 1rem;
+  white-space: nowrap; /* keep the title on a single line */
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #111317;
+}
+
+.projects__subtitle {
+  margin: clamp(1rem, 2vh, 1.5rem) 0 0;
+  white-space: nowrap; /* keep the subtitle on a single line */
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: #6b7480;
+}
+}
