@@ -130,6 +130,7 @@
   position: relative;
   height: 100dvh;
   background: #ffffff;
+
   margin-top: 5rem;
   font-family: var(--font-poppins), system-ui, sans-serif;
 }
@@ -138,6 +139,7 @@
 .project__frame {
   position: relative;
   width: 100%;
+    border-radius: 30px;
   height: 100%;
   overflow: hidden;
   background: #bfe0ff; /* sky fallback while the video loads */
