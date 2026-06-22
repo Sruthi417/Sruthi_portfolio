@@ -103,16 +103,23 @@ const Projects = () => {
       // scrub that card's frame smaller (origin: top) so it stays pinned at the
       // top, peeks ABOVE the new card, and insets from the sides — a real deck
       // building up, with each new card resting OUTSIDE the previous one.
+      //
+      // The recede is PROGRESSIVE: the deepest card (i=0) shrinks most, and each
+      // newer card shrinks a little less — so a card always has LESS inline
+      // padding than the one behind it (the fanned deck in reference #2).
       const ctx = gsap.context(() => {
         const cards = gsap.utils.toArray(".project");
         cards.forEach((card, i) => {
           if (i === cards.length - 1) return;
           const frame = card.querySelector(".project__frame");
+          // 0.90, 0.925, 0.95, 0.975 … → uniform 0.025 step up to the full
+          // front card (scale 1), so each card sits wider than the one behind.
+          const scaleTo = 0.9 + i * 0.025;
           gsap.fromTo(
             frame,
             { scale: 1 },
             {
-              scale: 0.9,
+              scale: scaleTo,
               ease: "none",
               scrollTrigger: {
                 trigger: cards[i + 1],
