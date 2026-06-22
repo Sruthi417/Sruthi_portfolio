@@ -70,5 +70,55 @@
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 400;
   color: #6b7480;
+  /* fades in once the title has revealed */
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+
+/* ---- title reveal: each letter rises + fades, left-to-right ---- */
+.projects__letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.3em);
+  will-change: opacity, transform;
+}
+
+.projects__letter--space {
+  width: 0.28em; /* keep the word gaps between inline-block letters */
+}
+
+/* the --in class is added (via JS) when the header scrolls into view */
+.projects__header--in .projects__letter {
+  /* per-letter animation-delay is set inline from JS for the stagger */
+  animation: projects-letter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.projects__header--in .projects__subtitle {
+  opacity: 1;
+  transition-delay: 1.15s; /* after the last letter lands */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects__letter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .projects__subtitle {
+    opacity: 1;
+    transition: none;
+  }
+}
+}
+
+@keyframes projects-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
