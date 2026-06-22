@@ -303,8 +303,10 @@
     border-radius: 50%;
     background: #111317;
     transform: translate(-50%, -50%) scale(1);
-    /* slower, smoother spread */
-    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    /* slow, gentle ease-in-out so it doesn't pop in. the target scale only
+       just covers the pill, so the whole duration is visible motion (no
+       wasted overshoot that made it feel abrupt) */
+    transition: transform 0.85s cubic-bezier(0.45, 0, 0.2, 1);
     z-index: 0;
   }
 
@@ -313,7 +315,7 @@
   }
 
   &:hover::before {
-    transform: translate(-50%, -50%) scale(22);
+    transform: translate(-50%, -50%) scale(12);
   }
 
   /* keep the icon + label above the expanding fill */
