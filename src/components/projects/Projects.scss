@@ -381,6 +381,13 @@
   }
 }
 
+/* ---- below 770px: the section's top padding is too tall — clamp it down ---- */
+@media (max-width: 770px) {
+  .projects {
+    padding-top: clamp(-1rem, 4vw, 3rem);
+  }
+}
+
 /* ---- small screens: keep the hero-style OVERLAY (no stacking) ----
    glass squircle pinned TOP-LEFT, phone pinned BOTTOM-RIGHT with a restricted
    height + auto width so it keeps its natural aspect ratio — same idea as the
