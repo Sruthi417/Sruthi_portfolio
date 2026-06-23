@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import "./Projects.scss";
 
 const TITLE = "check out some of my work";
-const LETTERS = TITLE.split("");
+const WORDS = TITLE.split(" ");
 
 // Same content 5× for now — swap each entry's title/desc/tags/image/year
 // when the real projects are ready.
@@ -166,18 +166,28 @@ const Projects = () => {
         </span>
 
         <h2 className="projects__title" aria-label={TITLE}>
-          {LETTERS.map((ch, i) => (
-            <span
-              key={i}
-              className={`projects__letter${
-                ch === " " ? " projects__letter--space" : ""
-              }`}
-              style={{ animationDelay: `${i * 0.04}s` }}
-              aria-hidden="true"
-            >
-              {ch === " " ? " " : ch}
-            </span>
-          ))}
+          {(() => {
+            // Group letters per word so a word never breaks mid-letter — only
+            // the (breakable) spaces between words are line-break points. `n`
+            // is a running index across all letters for the reveal stagger.
+            let n = 0;
+            return WORDS.map((word, wi) => (
+              <Fragment key={wi}>
+                <span className="projects__word" aria-hidden="true">
+                  {word.split("").map((ch, ci) => (
+                    <span
+                      key={ci}
+                      className="projects__letter"
+                      style={{ animationDelay: `${n++ * 0.04}s` }}
+                    >
+                      {ch}
+                    </span>
+                  ))}
+                </span>
+                {wi < WORDS.length - 1 ? " " : null}
+              </Fragment>
+            ));
+          })()}
         </h2>
 
         <p className="projects__subtitle">

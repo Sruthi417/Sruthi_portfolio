@@ -77,6 +77,13 @@
   transition: opacity 0.8s ease;
 }
 
+/* each word is kept intact (nowrap) so it never splits between letters;
+   line breaks only happen at the spaces BETWEEN words */
+.projects__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* ---- title reveal: each letter rises + fades, left-to-right ---- */
 .projects__letter {
   display: inline-block;
@@ -379,9 +386,11 @@
    height + auto width so it keeps its natural aspect ratio — same idea as the
    hero figure on mobile. the full-height pinned frame is kept as-is. */
 @media (max-width: 820px) {
-  /* the header can't stay on one line at this width — let it wrap */
-  .projects__title,
-  .projects__subtitle {
+  /* the header can't stay on one line at this width — let it wrap.
+     (selectors prefixed with .projects to match the nested base rule's
+     specificity, otherwise white-space: nowrap from the base would win) */
+  .projects .projects__title,
+  .projects .projects__subtitle {
     white-space: normal;
   }
 
@@ -419,6 +428,31 @@
   .project__image {
     height: clamp(18rem, 46dvh, 32rem);
     max-width: 55%;
+  }
+
+  /* ---- header: let the title + subtitle wrap instead of running off-screen.
+     the title is built from inline-block letter spans with no whitespace
+     between them, so it can't wrap on its own — turn the space-spans into real
+     inline spaces (a break opportunity) and shrink the type to fit.
+     NOTE: selectors are prefixed with .projects so they match the specificity
+     of the nested base rules (.projects .projects__title) and actually win. */
+  .projects .projects__header {
+    padding-inline: 1.25rem; /* keep text off the screen edges when wrapped */
+  }
+
+  .projects .projects__title {
+    white-space: normal;
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .projects .projects__letter--space {
+    display: inline; /* real, breakable space so the title can wrap to lines */
+    width: auto;
+  }
+
+  .projects .projects__subtitle {
+    white-space: normal;
+    font-size: clamp(0.9rem, 3.4vw, 1.1rem);
   }
 }
 
