@@ -2,7 +2,7 @@
   position: relative;
   background: #ffffff;
   font-family: var(--font-poppins), system-ui, sans-serif;
-  padding: 4.5rem 0 12vh;
+  padding: 4.5rem 0 clamp(3rem, 8vh, 5rem);
 
   /* faint divider near the top with a "+" notch centred on it
      (identical to the projects/summary separator) */
@@ -11,6 +11,11 @@
     border-top: 1px solid rgba(20, 35, 60, 0.1);
     margin-top: -30px;
     margin-inline: clamp(1.5rem, 4.5vw, 5.5rem);
+  }
+
+  /* same rule, but closing the section just above the footer */
+  .experience__rule--end {
+    margin-top: clamp(4rem, 10vh, 7rem);
   }
 
   .experience__plus {

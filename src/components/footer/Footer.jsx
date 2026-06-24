@@ -7,9 +7,9 @@ import "./Footer.scss";
 const ROTATING = ["create", "design", "build"];
 
 // TODO: swap these for the real handles/address
-const EMAIL = "sruthi@example.com";
-const LINKEDIN_URL = "https://www.linkedin.com/";
-const GITHUB_URL = "https://github.com/";
+const EMAIL = "sruthisukumaran07@gmail.com";
+const LINKEDIN_URL = "hhttps://www.linkedin.com/in/sruthi-m-sukumaran";
+const GITHUB_URL = "https://github.com/Sruthi417";
 
 const Footer = () => {
   // index of the word currently shown in the rotator

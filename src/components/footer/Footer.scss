@@ -59,9 +59,10 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  /* a little head/foot room so the tall script glyphs aren't clipped at rest */
-  padding: 0.12em 0.08em;
-  margin: -0.12em -0.08em;
+  /* generous room so the italic script's descenders + right-side swash aren't
+     clipped at rest; negative margins cancel it out of the layout */
+  padding: 0.15em 0.5em 0.45em 0.12em;
+  margin: -0.15em -0.5em -0.45em -0.12em;
 }
 
 /* the swapping word — brush script accent, like the hero "designer" */
@@ -78,7 +79,7 @@
 
 @keyframes footer-word {
   0% {
-    transform: translateY(110%);
+    transform: translateY(150%);
     opacity: 0;
   }
   16% {
@@ -91,7 +92,7 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(-120%);
+    transform: translateY(-150%);
     opacity: 0;
   }
 }
@@ -100,8 +101,14 @@
 .footer__contact {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(3rem, 14vw, 11rem);
+  align-items: flex-start; /* both columns hang from the same top line */
+  gap: clamp(3rem, 12vw, 9rem);
   margin-top: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__col-label {
@@ -112,7 +119,12 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
+/* the email text and the icon row share the same height + centre so their
+   content lines up across the two columns */
 .footer__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.6rem;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   font-weight: 500;
   color: #1e1233;
@@ -126,6 +138,8 @@
 
 .footer__socials {
   display: flex;
+  align-items: center;
+  min-height: 2.6rem;
   gap: 0.7rem;
 }
 
