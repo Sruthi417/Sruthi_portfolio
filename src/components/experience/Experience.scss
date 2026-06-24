@@ -62,7 +62,7 @@
   .experience__subtitle {
     margin: clamp(1rem, 2vh, 1.5rem) 0 0;
     max-width: 36rem;
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: 1rem;
     line-height: 1.5;
     font-weight: 400;
     color: #6b7480;
@@ -96,6 +96,117 @@
     opacity: 1;
     transition-delay: 0.9s; /* after the last letter lands */
   }
+
+  /* ===== experience card (no timeline) ===== */
+  .experience__cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(3rem, 7vh, 5rem);
+    padding-inline: 1.25rem;
+  }
+
+  /* the slanted card — tilt is tunable via the custom properties below */
+  .exp-card {
+    --tilt-x: 7deg; /* lean back (top recedes) */
+    --tilt-z: -1.5deg; /* slight in-plane rotation */
+    width: min(100%, 31rem);
+    padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.25rem)
+      clamp(2.5rem, 5vw, 3.5rem);
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow:
+      0 30px 60px rgba(20, 35, 60, 0.14),
+      0 6px 16px rgba(20, 35, 60, 0.08);
+    transform: perspective(1600px) rotateX(var(--tilt-x)) rotateZ(var(--tilt-z));
+    transform-origin: center top;
+  }
+
+  /* head: logo | role+company | location */
+  .exp-card__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .exp-card__logo {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 14px;
+    user-select: none;
+  }
+
+  .exp-card__role {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .exp-card__title {
+    margin: 0;
+    font-size: clamp(1.15rem, 1.8vw, 20px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111317;
+  }
+
+  .exp-card__company {
+    margin: 0.2rem 0 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6b7480;
+  }
+
+  .exp-card__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #4a5160;
+
+    svg {
+      color: #111317;
+    }
+  }
+
+  /* responsibilities */
+  .exp-card__points {
+    margin: 0;
+    padding: clamp(1.5rem, 3vw, 2rem) 0 0;
+    list-style: none;
+    border-top: 1px solid rgba(20, 35, 60, 0.07);
+
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #6b7480;
+
+      & + li {
+        margin-top: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0.15rem;
+        top: 0.7em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #9aa3b2;
+      }
+
+      strong {
+        font-weight: 600;
+        color: #2b313c;
+      }
+    }
+  }
 }
 
 @keyframes experience-letter {
@@ -119,5 +230,23 @@
   .experience__subtitle {
     opacity: 1;
     transition: none;
+  }
+}
+
+/* ---- card: stack the location + soften the tilt on smaller screens ---- */
+@media (max-width: 600px) {
+  .experience .exp-card {
+    --tilt-x: 3deg;
+    --tilt-z: 0deg;
+    border-radius: 18px;
+  }
+
+  .experience .exp-card__head {
+    flex-wrap: wrap;
+  }
+
+  .experience .exp-card__location {
+    flex-basis: 100%;
+    padding-left: 4.5rem; /* line up under the role text, past the logo */
   }
 }

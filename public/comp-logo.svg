@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Company logo">
+  <defs>
+    <linearGradient id="compLogoGrad" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2540d8"/>
+      <stop offset="0.45" stop-color="#7b4be0"/>
+      <stop offset="0.78" stop-color="#ff8a3d"/>
+      <stop offset="1" stop-color="#ffc62b"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#compLogoGrad)"/>
+  <!-- stylised "gate" mark in white blocks -->
+  <g fill="#ffffff">
+    <rect x="18" y="22" width="7" height="20" rx="2"/>
+    <rect x="39" y="22" width="7" height="20" rx="2"/>
+    <rect x="28.5" y="22" width="7" height="13" rx="2"/>
+    <rect x="18" y="22" width="28" height="6.5" rx="2.5"/>
+  </g>
+</svg>
