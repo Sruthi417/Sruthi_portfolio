@@ -1,0 +1,155 @@
+.about {
+  position: relative;
+  background: #ffffff;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  /* horizontal padding matches the hero/summary content inset so columns
+     line up across sections */
+  padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 4.5vw, 5.5rem) 12vh;
+  padding-top: 7rem;
+}
+
+/* faint divider near the top with a "+" notch centred on it */
+.about__rule {
+  position: relative;
+  border-top: 1px solid rgba(20, 35, 60, 0.1);
+  margin-top: -30px;
+}
+
+.about__plus {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  padding: 0 0.6rem;
+  background: #ffffff; /* mask the line behind the symbol */
+  color: #9aa3b2;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* two columns: photo | copy */
+.about__body {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+/* ---- left: photo column ---- */
+.about__photo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* the white polaroid frame — thin on three sides, thick at the bottom,
+   tilted a touch and lifted off the page with a soft shadow */
+.about__polaroid {
+  --tilt: -3deg;
+  background: #ffffff;
+  padding: 14px 14px 56px; /* extra room at the bottom = polaroid chin */
+  border-radius: 2px;
+  box-shadow:
+    0 18px 40px rgba(20, 35, 60, 0.18),
+    0 2px 6px rgba(20, 35, 60, 0.08);
+  transform: rotate(var(--tilt));
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: rotate(0deg);
+  }
+}
+
+.about__img {
+  display: block;
+  width: clamp(15rem, 26vw, 22rem);
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* ---- right: copy column ---- */
+.about__copy {
+  max-width: 38rem;
+}
+
+/* "✦ ABOUT ME" */
+.about__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #5b6472;
+}
+
+.about__diamond {
+  color: #1d6fff;
+  font-size: 1.4em;
+}
+
+.about__title {
+  margin: 1.25rem 0 1.75rem;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #111317;
+}
+
+.about__text {
+  margin: 0 0 1.4rem;
+  max-width: 39rem;
+  font-size:  1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #4a5160;
+}
+
+/* blue brush-script signature */
+.about__signature {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-caveat), cursive;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 1;
+  color: #1d6fff;
+}
+
+/* ===== responsive: stack the photo above the copy ===== */
+@media (max-width: 900px) {
+  .about__body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+    margin-top: 4rem;
+  }
+
+  .about__copy {
+    max-width: 42rem;
+  }
+
+  .about__label {
+    justify-content: center;
+  }
+
+  .about__text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .about__polaroid {
+    padding: 10px 10px 44px;
+  }
+
+  .about__img {
+    width: min(72vw, 18rem);
+  }
+}
