@@ -11,7 +11,16 @@ const About = () => {
       </div>
 
       <div className="about__body">
-        {/* ---- left: tilted polaroid photo ---- */}
+        {/* heading — moves to the top on mobile */}
+        <div className="about__heading">
+          <span className="about__label">
+            <span className="about__diamond">✦</span> ABOUT ME
+          </span>
+
+          <h2 className="about__title">a little about myself</h2>
+        </div>
+
+        {/* tilted polaroid photo */}
         <div className="about__photo">
           <div className="about__polaroid">
             <img
@@ -23,14 +32,8 @@ const About = () => {
           </div>
         </div>
 
-        {/* ---- right: copy ---- */}
-        <div className="about__copy">
-          <span className="about__label">
-            <span className="about__diamond">✦</span> ABOUT ME
-          </span>
-
-          <h2 className="about__title">a little about myself</h2>
-
+        {/* body copy + signature */}
+        <div className="about__detail">
           <p className="about__text">
             My journey into design started long before product design. I began
             with graphic design at a young age, spending years experimenting with
