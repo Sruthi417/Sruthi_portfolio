@@ -112,7 +112,7 @@
   /* bottom gap matches the paragraph→signature gap (1.4rem para margin +
      0.75rem signature margin = 2.15rem) so both gaps read the same */
   margin: 1.25rem 0 2.15rem;
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -184,7 +184,7 @@
 @media screen and (min-width: 1286px) {
   .about__detail {
   margin-right: -1rem;
-  margin-top: -4rem;
+  margin-top: -4.5rem;
   
 }
  
