@@ -1,0 +1,123 @@
+.experience {
+  position: relative;
+  background: #ffffff;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  padding: 4.5rem 0 12vh;
+
+  /* faint divider near the top with a "+" notch centred on it
+     (identical to the projects/summary separator) */
+  .experience__rule {
+    position: relative;
+    border-top: 1px solid rgba(20, 35, 60, 0.1);
+    margin-top: -30px;
+    margin-inline: clamp(1.5rem, 4.5vw, 5.5rem);
+  }
+
+  .experience__plus {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    padding: 0 0.6rem;
+    background: #ffffff; /* mask the line behind the symbol */
+    color: #9aa3b2;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  /* ---- centred header ---- */
+  .experience__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: clamp(4rem, 12vh, 6rem);
+    padding-inline: 1.25rem;
+  }
+
+  .experience__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #5b6472;
+  }
+
+  .experience__diamond {
+    color: #1d6fff;
+    font-size: 1.5em;
+  }
+
+  .experience__title {
+    margin: 1.5rem 0 0;
+    font-weight: 500;
+    font-size: clamp(2rem, 4.5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #111317;
+  }
+
+  .experience__subtitle {
+    margin: clamp(1rem, 2vh, 1.5rem) 0 0;
+    max-width: 36rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    font-weight: 400;
+    color: #6b7480;
+    /* fades in once the title has revealed */
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  /* each word is kept intact so it never splits between letters; line breaks
+     only happen at the spaces BETWEEN words */
+  .experience__word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* ---- title reveal: each letter rises + fades, left-to-right ---- */
+  .experience__letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.3em);
+    will-change: opacity, transform;
+  }
+
+  /* the --in class is added (via JS) when the header scrolls into view */
+  .experience__header--in .experience__letter {
+    /* per-letter animation-delay is set inline from JS for the stagger */
+    animation: experience-letter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .experience__header--in .experience__subtitle {
+    opacity: 1;
+    transition-delay: 0.9s; /* after the last letter lands */
+  }
+}
+
+@keyframes experience-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience__letter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .experience__subtitle {
+    opacity: 1;
+    transition: none;
+  }
+}
