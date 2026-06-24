@@ -233,6 +233,21 @@
   }
 }
 
+/* ---- tablet / small laptop: pull the title + card up a little ---- */
+@media (max-width: 900px) {
+  .experience {
+    padding-bottom: 9vh;
+  }
+
+  .experience .experience__header {
+    margin-top: clamp(3rem, 9vh, 5rem);
+  }
+
+  .experience .experience__cards {
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+  }
+}
+
 /* ---- card: stack the location + soften the tilt on smaller screens ---- */
 @media (max-width: 600px) {
   .experience .exp-card {
@@ -248,5 +263,44 @@
   .experience .exp-card__location {
     flex-basis: 100%;
     padding-left: 4.5rem; /* line up under the role text, past the logo */
+  }
+}
+
+/* ---- phones: compact the card so it never crowds the screen edges ---- */
+@media (max-width: 480px) {
+  .experience {
+    padding-top: 3.5rem;
+  }
+
+  .experience .experience__cards {
+    padding-inline: 1rem;
+  }
+
+  .experience .exp-card {
+    --tilt-x: 0deg; /* flat on the smallest screens — no perspective skew */
+    padding: 1.5rem 1.35rem 2rem;
+    border-radius: 16px;
+  }
+
+  .experience .exp-card__logo {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .experience .exp-card__title {
+    font-size: 1.1rem;
+  }
+
+  .experience .exp-card__company,
+  .experience .exp-card__location {
+    font-size: 0.9rem;
+  }
+
+  .experience .exp-card__location {
+    padding-left: 4rem; /* re-align under the role text past the smaller logo */
+  }
+
+  .experience .exp-card__points li {
+    font-size: 0.95rem;
   }
 }
