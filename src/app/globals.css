@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  /* smooth-scroll for in-page navbar anchor links (#work, #about) */
+  scroll-behavior: smooth;
+}
+
 html,
 body {
 /* width: 100%; */
@@ -12,6 +17,13 @@ body {
      scroll container — so `position: sticky` (project card stacking) works */
   overflow-x: clip;
   scrollbar-width: none;
+}
+
+/* anchor targets land below the fixed navbar pill */
+:target,
+#work,
+#about {
+  scroll-margin-top: 6rem;
 }
 
 ::-webkit-scrollbar {

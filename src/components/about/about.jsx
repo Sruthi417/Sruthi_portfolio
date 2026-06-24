@@ -30,7 +30,7 @@ const About = () => {
   }, []);
 
   return (
-    <section className="about">
+    <section className="about" id="about">
       {/* faint divider with a "+" notch, same as the other sections */}
       <div className="about__rule">
         <span className="about__plus">+</span>

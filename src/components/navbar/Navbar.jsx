@@ -33,10 +33,10 @@ const Navbar = () => {
 
         <ul className="navbar__links">
           <li>
-            <a href="#">Work</a>
+            <a href="#work">Work</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="#about">About</a>
           </li>
           <li>
             <a href="#">Resume</a>

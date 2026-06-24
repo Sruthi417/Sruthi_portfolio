@@ -150,7 +150,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="projects">
+    <section className="projects" id="work">
       {/* faint divider with a "+" notch, same as the summary section */}
       <div className="projects__rule">
         <span className="projects__plus">+</span>
