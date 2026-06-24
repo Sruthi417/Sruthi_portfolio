@@ -36,6 +36,10 @@
     "photo heading"
     "photo detail";
   align-items: center;
+  /* pack the heading + detail rows together and centre them as a block against
+     the (taller) photo — otherwise the auto rows stretch to the photo's height
+     and open a large gap between the title and the first paragraph */
+  align-content: center;
   justify-content: center;
   column-gap: clamp(2.5rem, 7vw, 7rem);
 }
@@ -85,6 +89,7 @@
 /* ---- right: copy column ---- */
 .about__detail {
   margin-right: -1rem;
+  
 }
 
 /* "✦ ABOUT ME" */
@@ -104,12 +109,54 @@
 }
 
 .about__title {
-  margin: 1.25rem 0 1.75rem;
+  /* bottom gap matches the paragraph→signature gap (1.4rem para margin +
+     0.75rem signature margin = 2.15rem) so both gaps read the same */
+  margin: 1.25rem 0 2.15rem;
   font-weight: 600;
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   line-height: 1.04;
   letter-spacing: -0.02em;
   color: #111317;
+}
+
+/* keep each word intact so it never splits between letters; line breaks
+   only happen at the spaces BETWEEN words */
+.about__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ---- title reveal: each letter rises + fades, left-to-right ---- */
+.about__letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.3em);
+  will-change: opacity, transform;
+}
+
+/* the --in class is added (via JS) when the heading scrolls into view */
+.about__heading--in .about__letter {
+  /* per-letter animation-delay is set inline from JS for the stagger */
+  animation: about-letter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes about-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__letter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 .about__text {
@@ -133,6 +180,15 @@
 }
 
 /* ===== responsive ===== */
+
+@media screen and (min-width: 1286px) {
+  .about__detail {
+  margin-right: -1rem;
+  margin-top: -4rem;
+  
+}
+ 
+}
 
 /* tablet / narrower desktop: tighten the gap before stacking kicks in */
 @media (max-width: 1100px) {

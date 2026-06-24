@@ -1,8 +1,34 @@
 "use client";
 
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./about.scss";
 
+const TITLE = "a little about myself";
+const WORDS = TITLE.split(" ");
+
 const About = () => {
+  const headingRef = useRef(null);
+  // `inView` flips true the first time the heading scrolls into view
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section className="about">
       {/* faint divider with a "+" notch, same as the other sections */}
@@ -12,12 +38,37 @@ const About = () => {
 
       <div className="about__body">
         {/* heading — moves to the top on mobile */}
-        <div className="about__heading">
+        <div
+          ref={headingRef}
+          className={`about__heading${inView ? " about__heading--in" : ""}`}
+        >
           <span className="about__label">
             <span className="about__diamond">✦</span> ABOUT ME
           </span>
 
-          <h2 className="about__title">a little about myself</h2>
+          <h2 className="about__title" aria-label={TITLE}>
+            {(() => {
+              // group letters per word so a word never breaks mid-letter;
+              // `n` is a running index across all letters for the stagger.
+              let n = 0;
+              return WORDS.map((word, wi) => (
+                <Fragment key={wi}>
+                  <span className="about__word" aria-hidden="true">
+                    {word.split("").map((ch, ci) => (
+                      <span
+                        key={ci}
+                        className="about__letter"
+                        style={{ animationDelay: `${n++ * 0.04}s` }}
+                      >
+                        {ch}
+                      </span>
+                    ))}
+                  </span>
+                  {wi < WORDS.length - 1 ? " " : null}
+                </Fragment>
+              ));
+            })()}
+          </h2>
         </div>
 
         {/* tilted polaroid photo */}
