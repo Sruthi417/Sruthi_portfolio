@@ -1,0 +1,208 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  /* full viewport, but allowed to grow if content needs it on short screens */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  /* the bottom padding reserves the lower band for the giant watermark */
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(6rem, 30vh, 20rem);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  color: #ffffff;
+  /* gradient built from #67429e (light lilac up top → deep violet at the
+     bottom), with two soft white "clouds" for depth */
+  background:
+    radial-gradient(
+      120% 80% at 82% 8%,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 45%
+    ),
+    radial-gradient(
+      90% 70% at 12% 90%,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    linear-gradient(
+      180deg,
+      #c9b8e6 0%,
+      #9b78cf 34%,
+      #67429e 70%,
+      #4d2e7c 100%
+    );
+}
+
+/* ---- foreground content: centred in the band above the watermark ---- */
+.footer__inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: clamp(1.5rem, 4.5vw, 5.5rem);
+}
+
+.footer__title {
+  margin: 0;
+  font-size: clamp(38px, 8vw, 64px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.footer__title-line {
+  display: block;
+}
+
+/* the masked window the rotating word slides through */
+.footer__rotator {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* a little head/foot room so the tall script glyphs aren't clipped at rest */
+  padding: 0.12em 0.08em;
+  margin: -0.12em -0.08em;
+}
+
+/* the swapping word — brush script accent, like the hero "designer" */
+.footer__word {
+  display: inline-block;
+  font-family: var(--font-caveat), cursive;
+  font-weight: 700;
+  font-size: 1.15em;
+  line-height: 1;
+  /* rise in → hold → rise out + fade, then JS swaps to the next word */
+  animation: footer-word 2.6s cubic-bezier(0.22, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes footer-word {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  16% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  /* the "wait a sec" hold in place */
+  70% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+}
+
+/* ---- contact row ---- */
+.footer__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(3rem, 14vw, 11rem);
+  margin-top: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.footer__col-label {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer__email {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  color: #1e1233;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.footer__socials {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #2a1a44;
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: #1b0f30;
+  }
+}
+
+/* divider + copyright sit just above the watermark */
+.footer__foot {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-top: clamp(1.25rem, 3vh, 2rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ---- giant background watermark name ---- */
+.footer__watermark {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(-1.5rem, -1.5vw, -0.5rem);
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  font-weight: 800;
+  /* shorter than before */
+  font-size: clamp(3.5rem, 17vw, 17rem);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  user-select: none;
+  /* fade the lower half of the lettering out to transparent */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 45%,
+    transparent 92%
+  );
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 92%);
+}
+
+/* respect reduced-motion: show the first word, static and visible */
+@media (prefers-reduced-motion: reduce) {
+  .footer__word {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ===== responsive ===== */
+@media (max-width: 600px) {
+  .footer__contact {
+    gap: 2.5rem;
+  }
+
+  .footer__title {
+    font-size: clamp(2.25rem, 11vw, 3.5rem);
+  }
+}
