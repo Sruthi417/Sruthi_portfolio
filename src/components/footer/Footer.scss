@@ -211,12 +211,55 @@
 }
 
 /* ===== responsive ===== */
+
+/* tablet: the watermark is smaller here, so reserve less bottom space */
+@media (max-width: 900px) {
+  .footer {
+    padding-bottom: clamp(5rem, 22vh, 12rem);
+  }
+}
+
 @media (max-width: 600px) {
+  .footer {
+    padding-bottom: clamp(4.5rem, 16vh, 8rem);
+  }
+
   .footer__contact {
-    gap: 2.5rem;
+    gap: 2.5rem 3rem; /* row-gap | column-gap when columns wrap */
   }
 
   .footer__title {
     font-size: clamp(2.25rem, 11vw, 3.5rem);
+  }
+}
+
+/* phones: tighten the edges + type, shrink the icon buttons */
+@media (max-width: 420px) {
+  .footer {
+    padding-bottom: clamp(4rem, 14vh, 6.5rem);
+  }
+
+  .footer__inner {
+    padding-inline: 1.25rem;
+  }
+
+  /* stack the two contact columns so neither gets squeezed */
+  .footer__contact {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .footer__email {
+    font-size: 1.05rem;
+    min-height: 0;
+  }
+
+  .footer__socials {
+    min-height: 0;
+  }
+
+  .footer__social {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }
