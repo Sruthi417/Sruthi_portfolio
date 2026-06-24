@@ -55,7 +55,7 @@
 }
 
 .summary__diamond {
-  color: #1d6fff;
+  color: #67429e;
   font-size: 1.5em;
 }
 
@@ -82,13 +82,13 @@
   transition: color 0.12s linear, filter 0.12s linear;
 }
 
-/* "understand" — blue brush script instead of black */
+/* "understand" — purple brush script instead of black */
 .summary__word--accent {
   font-family: var(--font-caveat), cursive;
   font-style: italic;
   font-weight: 700;
   font-size: 1.12em; /* compensate for the script's smaller x-height */
-  color: color-mix(in srgb, #1d6fff calc(var(--fill, 0) * 100%), #aeb4be);
+  color: color-mix(in srgb, #67429e calc(var(--fill, 0) * 100%), #aeb4be);
 }
 
 @media (prefers-reduced-motion: reduce) {
