@@ -5,12 +5,29 @@ import "./Summary.scss";
 
 // One sentence — wraps naturally, no manual <br> breaks.
 const TEXT =
-  "I turn messy, real-world problems into products people actually understand — interfaces that feel obvious, systems that scale, and details that quietly do the work.";
+  //"Building seamless, end-to-end web experiences — interfaces that feel obvious, backends that scale, and details that quietly keep everything working for real users.";
+  "Turn ideas into complete web experiences  — intuitive on the surface, dependable underneath, and crafted with care from end to end.";
 
-// This word gets the blue brush-script accent.
-const ACCENT = "understand";
+// This phrase gets the purple brush-script accent.
+const ACCENT = "web experiences";
 
-const WORDS = TEXT.split(" ");
+// Tokenise the sentence, but keep the multi-word accent phrase as a SINGLE
+// token — so it can be matched/coloured and stays together on one line.
+const buildTokens = (text, accent) => {
+  const idx = text.indexOf(accent);
+  if (idx === -1) {
+    return text.split(" ").map((t) => ({ text: t, accent: false }));
+  }
+  const tokens = [];
+  const before = text.slice(0, idx).trim();
+  const after = text.slice(idx + accent.length).trim();
+  if (before) before.split(" ").forEach((t) => tokens.push({ text: t, accent: false }));
+  tokens.push({ text: accent, accent: true });
+  if (after) after.split(" ").forEach((t) => tokens.push({ text: t, accent: false }));
+  return tokens;
+};
+
+const WORDS = buildTokens(TEXT, ACCENT);
 
 const Summary = () => {
   const textRef = useRef(null);
@@ -69,10 +86,10 @@ const Summary = () => {
                 wordRefs.current[i] = el;
               }}
               className={`summary__word${
-                word === ACCENT ? " summary__word--accent" : ""
+                word.accent ? " summary__word--accent" : ""
               }`}
             >
-              {word}{" "}
+              {word.text}{" "}
             </span>
           ))}
         </p>

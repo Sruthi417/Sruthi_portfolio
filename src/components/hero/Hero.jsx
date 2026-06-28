@@ -65,15 +65,21 @@ const Hero = () => {
         </p>
 
         <h1 className="hero__title">
-          <span className="hero__title-main">product</span>
+          <span className="hero__title-main">Fullstack</span>
           <span className="hero__title-script">engineer</span>
         </h1>
 
         <p className="hero__tagline">
           Building consumer &amp; enterprise products @{" "}
           <span className="hero__company">
-            <span className="hero__company-logo" aria-hidden="true" />
-            mygate
+            <img
+              className="hero__company-logo"
+              src="/comp-logo.svg"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
+            Floks Minds
           </span>
         </p>
       </div>

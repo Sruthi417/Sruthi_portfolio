@@ -9,25 +9,15 @@
   padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(6rem, 30vh, 20rem);
   font-family: var(--font-poppins), system-ui, sans-serif;
   color: #ffffff;
-  /* gradient built from #67429e (light lilac up top → deep violet at the
-     bottom), with two soft white "clouds" for depth */
+  /* deep violet at the bottom, gradually lightening and fading to transparent
+     at the top (so it melts into the white section above) */
   background:
-    radial-gradient(
-      120% 80% at 82% 8%,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0) 45%
-    ),
-    radial-gradient(
-      90% 70% at 12% 90%,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0) 55%
-    ),
     linear-gradient(
-      180deg,
-      #c9b8e6 0%,
-      #9b78cf 34%,
-      #67429e 70%,
-      #4d2e7c 100%
+      to top,
+      #4d2e7c 0%,
+      #67429e 45%,
+      rgba(103, 66, 158, 0.45) 80%,
+      rgba(103, 66, 158, 0) 100%
     );
 }
 

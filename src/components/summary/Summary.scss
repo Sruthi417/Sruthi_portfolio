@@ -61,7 +61,7 @@
 
 /* the reveal paragraph — right column */
 .summary__text {
-  max-width: 900px;
+  max-width: 870px;
   margin: 0;
   /* breathing space before each line begins, on the left */
   padding-left: clamp(1.5rem, 4vw, 4rem);
@@ -82,8 +82,9 @@
   transition: color 0.12s linear, filter 0.12s linear;
 }
 
-/* "understand" — purple brush script instead of black */
+/* "web experiences" — purple brush script, kept together on one line */
 .summary__word--accent {
+  white-space: nowrap; /* never split "web experiences" across two lines */
   font-family: var(--font-caveat), cursive;
   font-style: italic;
   font-weight: 700;

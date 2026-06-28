@@ -121,7 +121,7 @@
     display: block;
     font-family: var(--font-poppins), system-ui, sans-serif;
     /* fluid: scales with viewport, capped at the desktop size */
-    font-size: clamp(3.75rem, 13vw, 10rem);
+    font-size: clamp(3.75rem, 13vw, 9rem);
     font-weight: 500;
     /* em-based so the tracking scales with the font instead of crushing
        small sizes */
@@ -166,7 +166,7 @@
     align-items: center;
     vertical-align: middle; /* sits neatly on the text line when wrapped */
     gap: 0.3em;
-    font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+    font-size: clamp(0.95rem, 2.4vw, 1.15rem);
     /* sized in em so the pill scales with the tagline font-size */
     padding: 0.1em 0.3em 0.1em 0.2em;
     border-radius: 999px;
@@ -179,15 +179,14 @@
     box-shadow: 0 4px 18px rgba(40, 60, 90, 0.18);
   }
 
-  /* small placeholder badge for the mygate mark — swap for the real logo */
+  /* company mark */
   &__company-logo {
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    border-radius: 0.4em;
-    background:
-      radial-gradient(circle at 70% 70%, #ffd54a 0 28%, transparent 29%),
-      #1b1b1f;
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 0.32em;
+    object-fit: contain;
+    vertical-align: middle;
   }
 
   /* ---- z-3 — bottom meta row (over the white fog → dark text) ---- */
