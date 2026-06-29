@@ -86,7 +86,9 @@ const ProjectCard = ({ project, index = 0 }) => {
 
           <a
             className="project__cta"
-            href="#"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             onMouseEnter={growCursor}
             onMouseLeave={resetCursor}
           >

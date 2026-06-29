@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import "./Projects.scss";
 
-const TITLE = "check out some of my work";
+const TITLE = "Check out some of my work";
 const WORDS = TITLE.split(" ");
 
 // Same content 5× for now — swap each entry's title/desc/tags/image/year
@@ -12,43 +12,48 @@ const WORDS = TITLE.split(" ");
 const PROJECTS = [
   {
     num: "01",
-    year: "2025",
-    title: "The checkout, rebuilt for 5M+ homes",
-    tags: ["Payments", "iOS & Android"],
-    desc: "A checkout redesign focused on reducing friction, improving payment adoption, and supporting over 1M+ monthly transactions.",
+    year: "2026",
+    title: "The store builder, made for online commerce",
+    tags: ["Sass Platform", "iOS & Android"],
+    desc: "A multi-tenant store builder enabling businesses to launch branded ecommerce stores with custom domains, code-free for all",
     image: "/project1.png",
+    link: "https://www.rapidstore.app/",
   },
   {
     num: "02",
-    year: "2025",
-    title: "The checkout, rebuilt for 5M+ homes",
-    tags: ["Payments", "iOS & Android"],
-    desc: "A checkout redesign focused on reducing friction, improving payment adoption, and supporting over 1M+ monthly transactions.",
-    image: "/project1.png",
+    year: "2026",
+    title: "Timeless Fashion, Made for Everyday Elegance",
+    tags: ["Stripe Payments", "Fashion Store"],
+    desc: "A fashion ecommerce demo featuring curated products, cart functionality, and secure Stripe checkout in a clean, responsive interface",
+    image: "/project2.png",
+    link: "https://ecom-chi-olive.vercel.app/",
   },
   {
     num: "03",
-    year: "2025",
-    title: "The checkout, rebuilt for 5M+ homes",
-    tags: ["Payments", "iOS & Android"],
-    desc: "A checkout redesign focused on reducing friction, improving payment adoption, and supporting over 1M+ monthly transactions.",
-    image: "/project1.png",
+    year: "2026",
+    title: "A playful storefront, imagined for modern brands",
+    tags: ["Editorial Design", "Brand Experience"],
+    desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
+    image: "/project3.png",
+    link: "https://babemoss-ui.vercel.app/",
   },
   {
     num: "04",
-    year: "2025",
-    title: "The checkout, rebuilt for 5M+ homes",
-    tags: ["Payments", "iOS & Android"],
-    desc: "A checkout redesign focused on reducing friction, improving payment adoption, and supporting over 1M+ monthly transactions.",
-    image: "/project1.png",
+    year: "2026",
+    title: "The marketplace, built for entrepreneurs",
+    tags: ["Marketplace", "Community"],
+    desc: "A centralized platform where entrepreneurs showcase products, connect with customers, and grow their brands beyond social media",
+    image: "/project4.png",
+    link: " https://quickbay.in/",
   },
   {
     num: "05",
-    year: "2025",
-    title: "The checkout, rebuilt for 5M+ homes",
-    tags: ["Payments", "iOS & Android"],
-    desc: "A checkout redesign focused on reducing friction, improving payment adoption, and supporting over 1M+ monthly transactions.",
-    image: "/project1.png",
+    year: "2026",
+    title: "Where design meets engineering",
+    tags: ["Personal Brand", "Next.js"],
+    desc: "A personal website showcasing projects, technical skills, and a design-driven approach to building thoughtful, scalable web experiences",
+    image: "/project5.png",
+    
   },
 ];
 
@@ -70,7 +75,7 @@ const Projects = () => {
           obs.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     obs.observe(el);
@@ -129,7 +134,7 @@ const Projects = () => {
                 end: "top top",
                 scrub: true,
               },
-            }
+            },
           );
         });
       }, stackRef);
@@ -192,7 +197,8 @@ const Projects = () => {
 
         <p className="projects__subtitle">
           {/* A few products I&apos;ve helped shape, and the thinking behind them. */}
-          A few projects I&apos;ve built and contributed to, with the thinking behind them.
+          A few projects I&apos;ve built and contributed to, with the thinking
+          behind them.
         </p>
       </header>
 
