@@ -191,7 +191,8 @@ const Projects = () => {
         </h2>
 
         <p className="projects__subtitle">
-          A few products I&apos;ve helped shape, and the thinking behind them.
+          {/* A few products I&apos;ve helped shape, and the thinking behind them. */}
+          A few projects I&apos;ve built and contributed to, with the thinking behind them.
         </p>
       </header>
 
