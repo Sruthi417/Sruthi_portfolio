@@ -71,7 +71,12 @@ const Hero = () => {
 
         <p className="hero__tagline">
           Building consumer &amp; enterprise products @{" "}
-          <span className="hero__company">
+          <a
+            href="https://floks.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero__company"
+          >
             <img
               className="hero__company-logo"
               src="/comp-logo.svg"
@@ -80,12 +85,11 @@ const Hero = () => {
               draggable="false"
             />
             Floks Minds
-          </span>
+          </a>
         </p>
       </div>
 
       {/* z-3 — bottom meta row */}
-   
     </section>
   );
 };
