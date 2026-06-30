@@ -53,6 +53,7 @@ const PROJECTS = [
     tags: ["Personal Brand", "Next.js"],
     desc: "A personal website showcasing projects, technical skills, and a design-driven approach to building thoughtful, scalable web experiences",
     image: "/project5.png",
+    link:"https://sruthi-portfolio-livid.vercel.app/",
     
   },
 ];
