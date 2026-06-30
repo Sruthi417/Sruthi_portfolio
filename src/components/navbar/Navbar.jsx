@@ -39,7 +39,14 @@ const Navbar = () => {
             <a href="#about">About</a>
           </li>
           <li>
-            <a href="#">Resume</a>
+            <a
+              href="/sruthi_resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Resume"
+            >
+              Resume
+            </a>
           </li>
         </ul>
 
