@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import "./about.scss";
 
-const TITLE = "a little about myself";
+const TITLE = "A little about myself";
 const WORDS = TITLE.split(" ");
 
 const About = () => {
@@ -86,19 +86,11 @@ const About = () => {
         {/* body copy + signature */}
         <div className="about__detail">
           <p className="about__text">
-            My journey into design started long before product design. I began
-            with graphic design at a young age, spending years experimenting with
-            Photoshop, branding projects, and freelance work. During college, I
-            worked part-time designing websites, emails, and social media
-            campaigns, which helped me build a strong foundation across different
-            areas of design.
+         Three years ago, the world of technology felt completely unfamiliar. Choosing BCA meant stepping into a field where almost everything was new. Keeping pace with a rapidly evolving industry wasn't easy, but curiosity gradually replaced uncertainty. What started with learning HTML and CSS soon grew into exploring JavaScript, React, Next.js, Node.js, Express, and MongoDB, with every project becoming another step toward understanding how great software is built.
           </p>
 
           <p className="about__text">
-            Today, I work on consumer and enterprise products, where I enjoy
-            turning complex workflows into experiences that feel simple and
-            intuitive. I&apos;m particularly drawn to problems that sit at the
-            intersection of user needs, business goals, and technical constraints.
+            Today, I work on web products, where I enjoy turning ideas into experiences that feel simple and intuitive. I'm particularly drawn to challenges that sit at the intersection of user needs, thoughtful engineering, and reliable software.
           </p>
 
           <span className="about__signature">Sruthi.</span>

@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import "./Experience.scss";
 
-const TITLE = "the journey so far";
+const TITLE = "The journey so far";
 const WORDS = TITLE.split(" ");
 
 const Experience = () => {
@@ -73,8 +73,7 @@ const Experience = () => {
         </h2>
 
         <p className="experience__subtitle">
-          From healthcare SaaS to insurance to community tech — four roles
-          across two years, and counting.
+          A snapshot of the experiences that continue to shape my career.
         </p>
       </header>
 
@@ -91,11 +90,11 @@ const Experience = () => {
             />
 
             <div className="exp-card__role">
-              <h3 className="exp-card__title">Product Designer</h3>
-              <p className="exp-card__company">Mygate</p>
+              <h3 className="exp-card__title">Frontend Intern</h3>
+              <p className="exp-card__company">Floks Minds</p>
             </div>
 
-            <span className="exp-card__location">
+            {/* <span className="exp-card__location">
               <svg
                 viewBox="0 0 24 24"
                 width="18"
@@ -108,22 +107,19 @@ const Experience = () => {
                 />
               </svg>
               Bengaluru, KA
-            </span>
+            </span> */}
           </div>
 
           {/* responsibilities */}
           <ul className="exp-card__points">
             <li>
-              Own <strong>end to end product design</strong> across Resident
-              App, ERP, Payments, Helpdesk, and Smart Devices.
+              Developed <strong>responsive e-commerce storefront templates,</strong> translating designs into reusable frontend components.
             </li>
             <li>
-              Led the design and launch of <strong>QuickPass</strong>, now used
-              across 500+ societies with 28,000+ downloads.
+              Collaborated with designers and developers to deliver <strong>polished features</strong>
             </li>
             <li>
-              Redesigned the <strong>Helpdesk ecosystem</strong> and contributed
-              to large scale payments and access control experiences.
+              Improved <strong>usability, performance, and consistency</strong> by refining interfaces and implementing thoughtful frontend solutions.
             </li>
           </ul>
         </article>
