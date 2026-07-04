@@ -56,19 +56,27 @@
 .projects__title {
   margin: clamp(1.25rem, 3vh, 2rem) 0 0;
   margin-top: 1rem;
-  white-space: nowrap; /* keep the title on a single line */
+  
+  white-space: normal; 
+  text-wrap: balance;
+  max-width: 15ch; /* Ensures two lines */
   font-weight: 500;
-  /* fluid: caps at 60px on large screens (desktop unchanged) but scales down
-     so the single-line title doesn't overflow between 1400 and 820px */
-  font-size: clamp(2rem, 4.5vw, 60px);
-  line-height: 1.05;
+  //  white-space: nowrap; 
+
+  //font-size: clamp(2rem, 4.5vw, 60px);
+  //line-height: 1.05;
+  font-size: clamp(2.5rem, 5vw, 60px);
+  line-height: 1;
   letter-spacing: -0.02em;
   color: #111317;
 }
 
 .projects__subtitle {
   margin: clamp(1rem, 2vh, 1.5rem) 0 0;
-  white-space: nowrap; /* keep the subtitle on a single line */
+  white-space: normal;
+  //white-space: nowrap; 
+  text-wrap: balance;
+  max-width: 40ch; /* Ensures two lines */
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 400;
   color: #6b7480;
