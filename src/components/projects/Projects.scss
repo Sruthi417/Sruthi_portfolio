@@ -213,16 +213,24 @@
   transform: translateY(-50%);
   z-index: 2;
   cursor: none; /* hidden in favour of the custom arrow follower */
- // width: min(46%, 34rem);
- /* fluid: stays 45rem on large screens (matches the desktop look at ~1440px,
-    where 50vw == 45rem) but scales down below that so it never overflows onto
-    the phone in the 821–1400px range */
- width: min(45rem, 50vw);
+  width: min(45rem, 50vw);
   padding: clamp(1.5rem, 2.4vw, 2.5rem);
   border-radius: clamp(20px, 2vw, 32px);
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  
+  /* Liquid Glass UI */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
