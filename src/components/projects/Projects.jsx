@@ -49,11 +49,11 @@ const PROJECTS = [
   {
     num: "05",
     year: "2026",
-    title: "Where design meets engineering",
-    tags: ["Personal Brand", "Next.js"],
-    desc: "A personal website showcasing projects, technical skills, and a design-driven approach to building thoughtful, scalable web experiences",
+    title: "Designed Around the Way You Live",
+    tags: ["Client Project", "Real Estate"],
+    desc:  "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease. Fast, elegant!!!",
     image: "/project5.png",
-    link:"https://sruthi-portfolio-livid.vercel.app/",
+    link:"https://builder-website-lyart.vercel.app/",
     
   },
 ];
