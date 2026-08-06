@@ -10,7 +10,16 @@
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  background: #bfe0ff; /* sky fallback while the video loads */
+  /* First frame of hero-loop.mp4 as a still. It paints long before the video
+     can decode, so the section never flashes a flat block of colour — and
+     because it IS frame 1, the handover to the video is invisible.
+     The colour underneath is the poster's average, for the split second
+     before even the 20 KB jpg has arrived. */
+  background-color: #a37ec7;
+  background-image: url("/hero-poster.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   /* z-0 — full-bleed looping video */
   &__video {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import "./Hero.scss";
 
 // Playback speed of the sky video — lower = slower, more subtle cloud drift.
@@ -9,6 +10,12 @@ const VIDEO_SPEED = 0.25;
 
 const Hero = () => {
   const videoRef = useRef(null);
+
+  // Hoist <link rel="preload"> into <head> so the browser starts fetching the
+  // sky the moment the HTML streams in, instead of waiting for the CSS (poster
+  // background) or the video element to be parsed.
+  ReactDOM.preload("/hero-poster.jpg", { as: "image", fetchPriority: "high" });
+  ReactDOM.preload("/hero-loop.mp4", { as: "video", type: "video/mp4" });
 
   useEffect(() => {
     const video = videoRef.current;
@@ -36,6 +43,8 @@ const Hero = () => {
         ref={videoRef}
         className="hero__video"
         src="/hero-loop.mp4"
+        /* frame 1 of the clip — fills the element until the video can decode */
+        poster="/hero-poster.jpg"
         autoPlay
         loop
         muted
