@@ -105,7 +105,7 @@ const ProjectCard = ({ project, index = 0 }) => {
                 <path d="m13 6 6 6-6 6" />
               </svg>
             </span>
-            <span className="project__cta-label">View Case Study</span>
+            <span className="project__cta-label">Visit Website</span>
           </a>
         </div>
       </div>
