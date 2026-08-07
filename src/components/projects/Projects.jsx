@@ -22,20 +22,20 @@ const PROJECTS = [
   {
     num: "02",
     year: "2026",
+    title: "A private multiplayer drawing game for friends",
+    tags: ["Next.js", "Socket.IO"],
+    desc: "A private room-based multiplayer drawing platform featuring live canvas synchronization, instant guessing, customizable word packs, AI-enhanced prompts, dynamic scoring, and competitive gameplay designed for friends.",
+    image: "/project6.png",
+    link: "https://sketchverse-bmr3.onrender.com/",
+  },
+  {
+    num: "03",
+    year: "2026",
     title: "Timeless Fashion, Made for Everyday Elegance",
     tags: ["Stripe Payments", "Fashion Store"],
     desc: "A fashion ecommerce demo featuring curated products, cart functionality, and secure Stripe checkout in a clean, responsive interface",
     image: "/project2.png",
     link: "https://ecom-chi-olive.vercel.app/",
-  },
-  {
-    num: "03",
-    year: "2026",
-    title: "A playful storefront, imagined for modern brands",
-    tags: ["Editorial Design", "Brand Experience"],
-    desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
-    image: "/project3.png",
-    link: "https://babemoss-ui.vercel.app/",
   },
   {
     num: "04",
@@ -49,12 +49,21 @@ const PROJECTS = [
   {
     num: "05",
     year: "2026",
+    title: "A playful storefront, imagined for modern brands",
+    tags: ["Editorial Design", "Brand Experience"],
+    desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
+    image: "/project3.png",
+    link: "https://babemoss-ui.vercel.app/",
+  },
+
+  {
+    num: "06",
+    year: "2026",
     title: "Designed Around the Way You Live",
     tags: ["Client Project", "Real Estate"],
-    desc:  "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease. Fast, elegant!!!",
+    desc: "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease. Fast, elegant!!!",
     image: "/project5.png",
-    link:"https://builder-website-lyart.vercel.app/",
-    
+    link: "https://builder-website-lyart.vercel.app/",
   },
 ];
 
