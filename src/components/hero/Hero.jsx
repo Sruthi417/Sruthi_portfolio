@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./Hero.scss";
 
@@ -10,6 +10,9 @@ const VIDEO_SPEED = 0.25;
 
 const Hero = () => {
   const videoRef = useRef(null);
+  // Drives the still-frame cover below. Starts false so the very first paint
+  // is the poster — never a bare <video> that iOS could decorate.
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // Hoist <link rel="preload"> into <head> so the browser starts fetching the
   // sky the moment the HTML streams in, instead of waiting for the CSS (poster
@@ -27,9 +30,9 @@ const Hero = () => {
 
     // iOS refuses autoplay outright in Low Power Mode (and sometimes on a
     // cold first visit) — there's no way to detect that from JS, and the
-    // rejected promise is the only signal. The native play button it draws is
-    // hidden in CSS, so all that's left is to quietly retry: the first tap,
-    // scroll, or tab-refocus is a user gesture, which iOS does accept.
+    // rejected promise is the only signal. Whenever it refuses, the poster
+    // cover stays up and hides the button it draws; this just quietly retries,
+    // since the first tap/scroll is a gesture iOS does accept.
     const tryPlay = () => {
       applySpeed();
       video.play()?.catch(() => {
@@ -41,12 +44,22 @@ const Hero = () => {
       if (video.paused && document.visibilityState === "visible") tryPlay();
     };
 
+    // Uncover the video only once frames are genuinely on screen, and re-cover
+    // the instant it stops — a paused <video> is exactly when iOS repaints the
+    // button, so the cover has to come back with it.
+    const uncover = () => setIsPlaying(true);
+    const cover = () => setIsPlaying(false);
+
     tryPlay();
 
     // Browsers can reset playbackRate when the source (re)loads, so reapply.
     video.addEventListener("loadedmetadata", applySpeed);
     video.addEventListener("play", applySpeed);
     video.addEventListener("canplay", tryPlay);
+    video.addEventListener("playing", uncover);
+    video.addEventListener("pause", cover);
+    video.addEventListener("ended", cover);
+    video.addEventListener("error", cover);
 
     const passive = { passive: true };
     document.addEventListener("touchstart", resume, passive);
@@ -58,6 +71,10 @@ const Hero = () => {
       video.removeEventListener("loadedmetadata", applySpeed);
       video.removeEventListener("play", applySpeed);
       video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("playing", uncover);
+      video.removeEventListener("pause", cover);
+      video.removeEventListener("ended", cover);
+      video.removeEventListener("error", cover);
       document.removeEventListener("touchstart", resume);
       document.removeEventListener("pointerdown", resume);
       document.removeEventListener("scroll", resume);
@@ -79,6 +96,21 @@ const Hero = () => {
         muted
         playsInline
         preload="auto"
+        controls={false}
+        disablePictureInPicture
+      />
+
+      {/* z-0, painted over the video — the still frame that guarantees iOS's
+          start-playback button is never visible. Recent iOS ignores
+          `display:none` on that shadow-DOM control, so covering it is the only
+          approach that actually holds. It sits in front until frames are
+          really rolling, and comes straight back if playback ever stops. */}
+      <img
+        className={`hero__cover${isPlaying ? " hero__cover--lifted" : ""}`}
+        src="/hero-poster.jpg"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
       />
 
       {/* z-1 — figure sitting on the wall, anchored bottom-right */}

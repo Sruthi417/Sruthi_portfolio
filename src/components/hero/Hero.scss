@@ -32,12 +32,13 @@
     /* purely decorative — never swallow a tap or open native controls */
     pointer-events: none;
 
-    /* iOS Safari draws a large play button into the video's shadow DOM the
-       moment autoplay is refused (Low Power Mode is the usual trigger). It
-       reads as a broken player, so every native control is suppressed below.
-       Each selector gets its OWN rule on purpose: in a comma-separated list,
-       a single pseudo-element the browser doesn't know throws out the whole
-       block, and support for these differs across engines. */
+    /* Suppress native controls where the engine actually allows it (desktop
+       Safari, Chrome). This is NOT what saves us on iPhone — recent iOS
+       ignores display:none on its start-playback button, which is why
+       .hero__cover below paints over the video instead. Kept as a first line
+       of defence. Each selector gets its OWN rule on purpose: in a
+       comma-separated list, a single pseudo-element the browser doesn't know
+       throws out the whole block, and support differs across engines. */
     &::-webkit-media-controls {
       display: none !important;
     }
@@ -61,6 +62,32 @@
       appearance: none;
       opacity: 0;
     }
+  }
+
+  /* z-0, painted OVER the video — the guarantee that iOS's play button is
+     never seen. The button lives in the video's shadow DOM, so it can't
+     escape a sibling that paints later; this is the one approach iOS can't
+     override. Same z-index as .hero__video on purpose: the tie is broken by
+     DOM order, and staying at 0 keeps the figure (1) and fog (2) on top.
+     Because it's frame 1 of the clip, the handover is invisible. */
+  &__cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    /* no transition here: when playback stops, the cover must be back
+       instantly, or the button shows through while it fades in */
+    opacity: 1;
+  }
+
+  /* only the fade-OUT is animated — the class is gone on the way back */
+  &__cover--lifted {
+    opacity: 0;
+    transition: opacity 400ms ease;
   }
 
   /* z-1 — figure + wall, top-anchored to the right so the wall hangs into the fog */
