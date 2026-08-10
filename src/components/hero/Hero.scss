@@ -301,6 +301,17 @@
       max-width: 45%;
     }
 
+    /* Every line in the column shares one left edge. The tagline carries a
+       10px nudge at wider widths (kept there, so desktop is untouched) which
+       left it — and the "Floks Minds" pill inside it — sitting proud of the
+       greeting and the title on a phone. Note this zeroes .hero__title, NOT
+       .hero__title-script: the script line keeps its deliberate indent. */
+    &__greeting,
+    &__title,
+    &__tagline {
+      margin-left: 0;
+    }
+
     /* a little larger so the titles fill the portrait column */
     &__title-main {
       font-size: clamp(3.75rem, 15vw, 10rem);
