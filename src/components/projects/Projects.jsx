@@ -61,7 +61,7 @@ const PROJECTS = [
     year: "2026",
     title: "Designed Around the Way You Live",
     tags: ["Client Project", "Real Estate"],
-    desc: "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease. Fast, elegant!!!",
+    desc: "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease.",
     image: "/project5.png",
     link: "https://builder-website-lyart.vercel.app/",
   },
