@@ -29,6 +29,38 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    /* purely decorative — never swallow a tap or open native controls */
+    pointer-events: none;
+
+    /* iOS Safari draws a large play button into the video's shadow DOM the
+       moment autoplay is refused (Low Power Mode is the usual trigger). It
+       reads as a broken player, so every native control is suppressed below.
+       Each selector gets its OWN rule on purpose: in a comma-separated list,
+       a single pseudo-element the browser doesn't know throws out the whole
+       block, and support for these differs across engines. */
+    &::-webkit-media-controls {
+      display: none !important;
+    }
+
+    &::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+
+    &::-webkit-media-controls-panel {
+      display: none !important;
+    }
+
+    &::-webkit-media-controls-play-button {
+      display: none !important;
+    }
+
+    /* the specific offender on iPhone */
+    &::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
+      appearance: none;
+      opacity: 0;
+    }
   }
 
   /* z-1 — figure + wall, top-anchored to the right so the wall hangs into the fog */

@@ -25,14 +25,43 @@ const Hero = () => {
       video.playbackRate = VIDEO_SPEED;
     };
 
-    applySpeed();
+    // iOS refuses autoplay outright in Low Power Mode (and sometimes on a
+    // cold first visit) — there's no way to detect that from JS, and the
+    // rejected promise is the only signal. The native play button it draws is
+    // hidden in CSS, so all that's left is to quietly retry: the first tap,
+    // scroll, or tab-refocus is a user gesture, which iOS does accept.
+    const tryPlay = () => {
+      applySpeed();
+      video.play()?.catch(() => {
+        /* still blocked — the poster stays up, which is the intended look */
+      });
+    };
+
+    const resume = () => {
+      if (video.paused && document.visibilityState === "visible") tryPlay();
+    };
+
+    tryPlay();
+
     // Browsers can reset playbackRate when the source (re)loads, so reapply.
     video.addEventListener("loadedmetadata", applySpeed);
     video.addEventListener("play", applySpeed);
+    video.addEventListener("canplay", tryPlay);
+
+    const passive = { passive: true };
+    document.addEventListener("touchstart", resume, passive);
+    document.addEventListener("pointerdown", resume, passive);
+    document.addEventListener("scroll", resume, passive);
+    document.addEventListener("visibilitychange", resume);
 
     return () => {
       video.removeEventListener("loadedmetadata", applySpeed);
       video.removeEventListener("play", applySpeed);
+      video.removeEventListener("canplay", tryPlay);
+      document.removeEventListener("touchstart", resume);
+      document.removeEventListener("pointerdown", resume);
+      document.removeEventListener("scroll", resume);
+      document.removeEventListener("visibilitychange", resume);
     };
   }, []);
 
