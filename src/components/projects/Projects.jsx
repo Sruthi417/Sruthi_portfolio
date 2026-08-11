@@ -26,7 +26,7 @@ const PROJECTS = [
     tags: ["Next.js", "Socket.IO"],
     desc: "A private room-based multiplayer drawing platform featuring live canvas synchronization, instant guessing, customizable word packs, AI-enhanced prompts, dynamic scoring, and competitive gameplay designed for friends.",
     image: "/project6.png",
-    link: "https://sketchverse-bmr3.onrender.com/",
+    link: "https://sketch-verse-cud3.vercel.app/",
   },
   {
     num: "03",
