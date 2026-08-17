@@ -20,7 +20,16 @@ const PROJECTS = [
     link: "https://www.rapidstore.app/",
   },
   {
-    num: "02",
+  num: "02",
+  year: "2026",
+  title: "A refined SaaS experience built for modern teams",
+  tags: ["Next.js", "Framer Motion"],
+  desc: "A polished SaaS product experience focused on strong visual hierarchy, responsive layouts, subtle motion, and a cohesive design system crafted to present a modern digital product with clarity and confidence.",
+  image: "/project7.png",
+  link: "https://saazcraft.vercel.app",
+},
+  {
+    num: "03",
     year: "2026",
     title: "A private multiplayer drawing game for friends",
     tags: ["Next.js", "Socket.IO"],
@@ -29,7 +38,7 @@ const PROJECTS = [
     link: "https://sketch-verse-cud3.vercel.app/",
   },
   {
-    num: "03",
+    num: "04",
     year: "2026",
     title: "Timeless Fashion, Made for Everyday Elegance",
     tags: ["Stripe Payments", "Fashion Store"],
@@ -38,7 +47,7 @@ const PROJECTS = [
     link: "https://ecom-chi-olive.vercel.app/",
   },
   {
-    num: "04",
+    num: "05",
     year: "2026",
     title: "The marketplace, built for entrepreneurs",
     tags: ["Marketplace", "Community"],
@@ -47,7 +56,7 @@ const PROJECTS = [
     link: " https://quickbay.in/",
   },
   {
-    num: "05",
+    num: "06",
     year: "2026",
     title: "A playful storefront, imagined for modern brands",
     tags: ["Editorial Design", "Brand Experience"],
@@ -57,7 +66,7 @@ const PROJECTS = [
   },
 
   {
-    num: "06",
+    num: "07",
     year: "2026",
     title: "Designed Around the Way You Live",
     tags: ["Client Project", "Real Estate"],
