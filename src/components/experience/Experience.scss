@@ -2,7 +2,7 @@
   position: relative;
   background: #ffffff;
   font-family: var(--font-poppins), system-ui, sans-serif;
-  padding: 4.5rem 0 clamp(3rem, 8vh, 5rem);
+  padding: 4.5rem 0 clamp(3rem, 8vh, 4.5rem);
 
   /* faint divider near the top with a "+" notch centred on it
      (identical to the projects/summary separator) */
@@ -66,7 +66,7 @@
 
   .experience__subtitle {
     margin: clamp(1rem, 2vh, 1.5rem) 0 0;
-    max-width: 36rem;
+    max-width: 400px;
     font-size: 1rem;
     line-height: 1.5;
     font-weight: 400;
@@ -121,8 +121,8 @@
     border-radius: 24px;
     background: #ffffff;
     box-shadow:
-      0 30px 60px rgba(20, 35, 60, 0.14),
-      0 6px 16px rgba(20, 35, 60, 0.08);
+      0 15px 30px rgba(20, 35, 60, 0.09),
+  0 4px 10px rgba(20, 35, 60, 0.05);
     transform: perspective(1600px) rotateX(var(--tilt-x)) rotateZ(var(--tilt-z));
     transform-origin: center top;
   }

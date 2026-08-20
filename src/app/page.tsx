@@ -4,6 +4,7 @@ import Summary from "../components/summary/Summary";
 import About from "../components/about/about";
 import Projects from "../components/projects/Projects";
 import Experience from "../components/experience/Experience";
+import Skills from "../components/skills/Skill"
 import Footer from "../components/footer/Footer";
 
 
@@ -17,6 +18,7 @@ const Portfolio = () => {
       <Projects />
       <About/>
       <Experience />
+      <Skills/>
       <Footer />
     </div>
   );

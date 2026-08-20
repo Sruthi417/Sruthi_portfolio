@@ -127,9 +127,9 @@ const Experience = () => {
 
       {/* closing divider before the footer — same "+" notch rule as the
           other sections */}
-      <div className="experience__rule experience__rule--end">
+      {/* <div className="experience__rule experience__rule--end">
         <span className="experience__plus">+</span>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -1,0 +1,469 @@
+.skills {
+  position: relative;
+  background: #ffffff;
+
+  font-family: var(--font-poppins), system-ui, sans-serif;
+
+  padding:
+    clamp(2rem, 5vh, 3.5rem)
+    clamp(1.5rem, 4.5vw, 5.5rem)
+    12vh;
+
+  padding-top: 7rem;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.skills__rule {
+  position: relative;
+
+  border-top: 1px solid rgba(20, 35, 60, 0.1);
+
+  margin-top: -30px;
+}
+
+.skills__rule--end {
+    margin-top: clamp(4rem, 10vh, 7rem);
+  }
+
+.skills__plus {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+
+  padding: 0 0.6rem;
+
+  background: #ffffff;
+
+  color: #9aa3b2;
+
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+.skills__body {
+  margin-top: 5.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.skills__heading {
+  width: 100%;
+  max-width: 52rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ✦ SKILLS */
+
+.skills__label {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.55rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  color: #5b6472;
+}
+
+.skills__diamond {
+  color: #67429e;
+
+  font-size: 1.4em;
+}
+
+/* Main heading */
+
+.skills__title {
+  margin: 1.25rem 0 1.15rem;
+
+  font-weight: 500;
+
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+
+  line-height: 1.04;
+
+  letter-spacing: -0.02em;
+
+  color: #111317;
+}
+
+/* Keep words together */
+
+.skills__word {
+  display: inline-block;
+
+  white-space: nowrap;
+}
+
+/* Individual letters */
+
+.skills__letter {
+  display: inline-block;
+
+  opacity: 0;
+
+  transform: translateY(0.3em);
+
+  will-change: opacity, transform;
+}
+
+/* Heading reveal */
+
+.skills__heading--in .skills__letter {
+  animation:
+    skills-letter
+    0.5s
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    forwards;
+}
+
+@keyframes skills-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Description */
+
+.skills__description {
+  margin: 0;
+
+  max-width: 400px;
+
+  font-size: 1rem;
+  line-height: 1.6;
+
+  font-weight: 400;
+
+  color: #4a5160;
+}
+
+/* =========================================
+   VIDEO / CHARACTER
+========================================= */
+
+.skills__character {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.skills__video {
+  display: block;
+ margin-block: clamp(-2rem, -3vw, -1.5rem);
+  width: clamp(8rem, 13vw, 16rem);
+
+  height: auto;
+
+  object-fit: contain;
+
+  /*
+    Useful if the video has a white background.
+    Remove this if your video already has transparency.
+  */
+  mix-blend-mode: multiply;
+}
+
+/* =========================================
+   SKILL STACK
+========================================= */
+
+.skills__stack {
+  position: relative;
+
+  width: min(100%, 58rem);
+
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1.8rem;
+}
+
+/* =========================================
+   LOGO ROW
+========================================= */
+
+.skills__row {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.8rem;
+}
+
+/*
+  Horizontal line behind each row
+*/
+
+.skills__row::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: -8rem;
+  right: -8rem;
+
+  height: 5px;
+
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(20, 35, 60, 0.03) 8%,
+    rgba(20, 35, 60, 0.07) 20%,
+    rgba(20, 35, 60, 0.10) 35%,
+    rgba(20, 35, 60, 0.10) 65%,
+    rgba(20, 35, 60, 0.07) 80%,
+    rgba(20, 35, 60, 0.03) 92%,
+    transparent 100%
+  );
+
+  z-index: 0;
+}
+
+/* =========================================
+   LOGO CARD
+========================================= */
+
+.skills__card {
+  position: relative;
+
+  z-index: 1;
+
+  width: clamp(5.5rem, 7vw, 6.2rem);
+  height: clamp(5.5rem, 7vw, 6.2rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f6f6f6;
+
+  border: 1px solid rgba(20, 35, 60, 0.05);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 2px 5px rgba(20, 35, 60, 0.03),
+    0 8px 20px rgba(20, 35, 60, 0.04);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.skills__card:hover {
+  transform: translateY(-5px);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(20, 35, 60, 0.08),
+    0 16px 35px rgba(20, 35, 60, 0.06);
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.skills__logo {
+  width: 4.5rem;
+  height: 4.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills__logo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  user-select: none;
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media screen and (min-width: 1286px) {
+  .skills__body {
+    margin-top: 6rem;
+  }
+
+  .skills__character {
+    margin-top: 4.5rem;
+  }
+
+  .skills__stack {
+    margin-top: 1.5rem;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .skills {
+    padding-top: 5.5rem;
+  }
+
+  .skills__body {
+    margin-top: 4rem;
+  }
+
+  .skills__character {
+    margin-top: 3.5rem;
+  }
+
+  .skills__stack {
+    width: 100%;
+  }
+
+  .skills__row::before {
+    left: -8vw;
+    right: -8vw;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .skills {
+    padding-top: 4.5rem;
+  }
+
+  .skills__body {
+    margin-top: 3rem;
+  }
+
+  .skills__title {
+    margin: 1rem 0 1.25rem;
+  }
+
+  .skills__description {
+    max-width: 24rem;
+
+    font-size: 0.95rem;
+  }
+
+  .skills__character {
+    margin-top: 3rem;
+  }
+
+  .skills__video {
+    width: 8rem;
+  }
+
+  .skills__stack {
+    margin-top: 1rem;
+
+    gap: 1rem;
+  }
+
+  .skills__row {
+    gap: 0.45rem;
+  }
+
+  .skills__card {
+    width: 4.2rem;
+    height: 4.2rem;
+
+    border-radius: 11px;
+  }
+
+  .skills__logo {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .skills__row::before {
+    left: -4vw;
+    right: -4vw;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .skills__row {
+    gap: 0.35rem;
+  }
+
+  .skills__card {
+    width: 3.7rem;
+    height: 3.7rem;
+  }
+
+  .skills__logo {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .skills__letter {
+    opacity: 1;
+
+    transform: none;
+
+    animation: none;
+  }
+
+  .skills__card {
+    transition: none;
+  }
+}
