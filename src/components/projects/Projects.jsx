@@ -17,7 +17,7 @@ const PROJECTS = [
     tags: ["Sass Platform", "iOS & Android"],
     desc: "A multi-tenant store builder enabling businesses to launch branded ecommerce stores with custom domains, code-free for all",
     image: "/project1.png",
-    link: "https://www.rapidstore.app/",
+    link: "https://rapidstore-black.vercel.app/",
   },
   {
   num: "02",
