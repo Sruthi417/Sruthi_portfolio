@@ -33,6 +33,7 @@ const ProjectCard = ({ project, index = 0 }) => {
           className="project__bg"
           src="/hero-loop.mp4"
           autoPlay
+          poster="/hero-poster.jpg"
           loop
           muted
           playsInline
