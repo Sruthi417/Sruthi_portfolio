@@ -40,12 +40,10 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="/sruthi_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Resume"
+              href="mailto:sruthisukumaran07@gmail.com"
+              aria-label="Contact Sruthi via email"
             >
-              Resume
+              Contact Us
             </a>
           </li>
         </ul>
