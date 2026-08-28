@@ -43,7 +43,7 @@ const Navbar = () => {
               href="mailto:sruthisukumaran07@gmail.com"
               aria-label="Contact Sruthi via email"
             >
-              Contact Us
+              Contact
             </a>
           </li>
         </ul>
