@@ -76,7 +76,7 @@ const About = () => {
           <div className="about__polaroid">
             <img
               className="about__img"
-              src="/aboutMe.png"
+              src="/aboutMe.webp"
               alt="Portrait of Sruthi"
               draggable="false"
             />

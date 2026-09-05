@@ -7,19 +7,19 @@ const TITLE = "What I work with";
 const WORDS = TITLE.split(" ");
 
 const skills = [
-  "/logo1.png",
-  "/logo2.png",
-  "/logo3.png",
-  "/logo4.png",
-  "/logo5.png",
-  "/logo6.png",
-  "/logo7.png",
-  "/logo8.png",
-  "/logo9.png",
-  "/logo10.png",
-  "/logo11.png",
-  "/logo12.png",
-  "/logo13.png",
+  "/logo1.webp",
+  "/logo2.webp",
+  "/logo3.webp",
+  "/logo4.webp",
+  "/logo5.webp",
+  "/logo6.webp",
+  "/logo7.webp",
+  "/logo8.webp",
+  "/logo9.webp",
+  "/logo10.webp",
+  "/logo11.webp",
+  "/logo12.webp",
+  "/logo13.webp",
 ];
 
 const Skills = () => {

@@ -17,7 +17,7 @@ const Hero = () => {
   // Hoist <link rel="preload"> into <head> so the browser starts fetching the
   // sky the moment the HTML streams in, instead of waiting for the CSS (poster
   // background) or the video element to be parsed.
-  ReactDOM.preload("/hero-poster.jpg", { as: "image", fetchPriority: "high" });
+  ReactDOM.preload("/hero-poster.webp", { as: "image", fetchPriority: "high" });
   ReactDOM.preload("/hero-loop.mp4", { as: "video", type: "video/mp4" });
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const Hero = () => {
         className="hero__video"
         src="/hero-loop.mp4"
         /* frame 1 of the clip — fills the element until the video can decode */
-        poster="/hero-poster.jpg"
+        poster="/hero-poster.webp"
         autoPlay
         loop
         muted
@@ -107,7 +107,7 @@ const Hero = () => {
           really rolling, and comes straight back if playback ever stops. */}
       <img
         className={`hero__cover${isPlaying ? " hero__cover--lifted" : ""}`}
-        src="/hero-poster.jpg"
+        src="/hero-poster.webp"
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -116,7 +116,7 @@ const Hero = () => {
       {/* z-1 — figure sitting on the wall, anchored bottom-right */}
       <img
         className="hero__figure"
-        src="/herome.png"
+        src="/herome.webp"
         alt=""
         aria-hidden="true"
         draggable="false"

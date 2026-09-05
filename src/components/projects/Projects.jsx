@@ -18,7 +18,7 @@ const PROJECTS = [
   title: "A refined SaaS experience built for modern teams",
   tags: ["Next.js", "Framer Motion"],
   desc: "A polished SaaS product experience focused on strong visual hierarchy, responsive layouts, subtle motion, and a cohesive design system crafted to present a modern digital product with clarity and confidence.",
-  image: "/project7.png",
+  image: "/project7.webp",
   link: "https://saazcraft.vercel.app",
 },
 
@@ -28,7 +28,7 @@ const PROJECTS = [
     title: "A modern landing page for a mobile app",
     tags: ["Next.js", "React"],
     desc: "A modern mobile app landing page featuring engaging visuals, smooth interactions, responsive layouts, and a clean user interface designed to introduce and showcase the app experience.",
-    image: "/project8.png",
+    image: "/project8.webp",
 
     link: "https://hibo.vercel.app/",
 },
@@ -38,7 +38,7 @@ const PROJECTS = [
     title: "The store builder, made for online commerce",
     tags: ["Sass Platform", "iOS & Android"],
     desc: "A multi-tenant store builder enabling businesses to launch branded ecommerce stores with custom domains, code-free for all",
-    image: "/project1.png",
+    image: "/project1.webp",
     link: "https://rapidstore-black.vercel.app/",
   },
 
@@ -48,7 +48,7 @@ const PROJECTS = [
     title: "A private multiplayer drawing game for friends",
     tags: ["Next.js", "Socket.IO"],
     desc: "A private room-based multiplayer drawing platform featuring live canvas synchronization, instant guessing, customizable word packs, AI-enhanced prompts, dynamic scoring, and competitive gameplay designed for friends.",
-    image: "/project6.png",
+    image: "/project6.webp",
     link: "https://sketch-verse-cud3.vercel.app/",
   },
   {
@@ -57,7 +57,7 @@ const PROJECTS = [
     title: "Timeless Fashion, Made for Everyday Elegance",
     tags: ["Stripe Payments", "Fashion Store"],
     desc: "A fashion ecommerce demo featuring curated products, cart functionality, and secure Stripe checkout in a clean, responsive interface",
-    image: "/project2.png",
+    image: "/project2.webp",
     link: "https://ecom-chi-olive.vercel.app/",
   },
   {
@@ -66,7 +66,7 @@ const PROJECTS = [
     title: "The marketplace, built for entrepreneurs",
     tags: ["Marketplace", "Community"],
     desc: "A centralized platform where entrepreneurs showcase products, connect with customers, and grow their brands beyond social media",
-    image: "/project4.png",
+    image: "/project4.webp",
     link: " https://quickbay.in/",
   },
   // {
@@ -75,7 +75,7 @@ const PROJECTS = [
   //   title: "A playful storefront, imagined for modern brands",
   //   tags: ["Editorial Design", "Brand Experience"],
   //   desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
-  //   image: "/project3.png",
+  //   image: "/project3.webp",
   //   link: "https://babemoss-ui.vercel.app/",
   // },
 
@@ -85,7 +85,7 @@ const PROJECTS = [
     title: "Designed Around the Way You Live",
     tags: ["Client Project", "Real Estate"],
     desc: "A modern real estate platform built for a property agency, helping users explore, buy, sell, and rent homes with ease.",
-    image: "/project5.png",
+    image: "/project5.webp",
     link: "https://builder-website-lyart.vercel.app/",
   },
 ];
