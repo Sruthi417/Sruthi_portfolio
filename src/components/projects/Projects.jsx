@@ -10,17 +10,10 @@ const WORDS = TITLE.split(" ");
 // Same content 5× for now — swap each entry's title/desc/tags/image/year
 // when the real projects are ready.
 const PROJECTS = [
-  {
-    num: "01",
-    year: "2026",
-    title: "The store builder, made for online commerce",
-    tags: ["Sass Platform", "iOS & Android"],
-    desc: "A multi-tenant store builder enabling businesses to launch branded ecommerce stores with custom domains, code-free for all",
-    image: "/project1.png",
-    link: "https://rapidstore-black.vercel.app/",
-  },
-  {
-  num: "02",
+
+
+   {
+  num: "01",
   year: "2026",
   title: "A refined SaaS experience built for modern teams",
   tags: ["Next.js", "Framer Motion"],
@@ -28,8 +21,29 @@ const PROJECTS = [
   image: "/project7.png",
   link: "https://saazcraft.vercel.app",
 },
-  {
+
+    {
+    num: "02",
+    year: "2026",
+    title: "A modern landing page for a mobile app",
+    tags: ["Next.js", "React"],
+    desc: "A modern mobile app landing page featuring engaging visuals, smooth interactions, responsive layouts, and a clean user interface designed to introduce and showcase the app experience.",
+    image: "/project8.png",
+
+    link: "https://hibo.vercel.app/",
+},
+ {
     num: "03",
+    year: "2026",
+    title: "The store builder, made for online commerce",
+    tags: ["Sass Platform", "iOS & Android"],
+    desc: "A multi-tenant store builder enabling businesses to launch branded ecommerce stores with custom domains, code-free for all",
+    image: "/project1.png",
+    link: "https://rapidstore-black.vercel.app/",
+  },
+
+  {
+    num: "04",
     year: "2026",
     title: "A private multiplayer drawing game for friends",
     tags: ["Next.js", "Socket.IO"],
@@ -38,7 +52,7 @@ const PROJECTS = [
     link: "https://sketch-verse-cud3.vercel.app/",
   },
   {
-    num: "04",
+    num: "05",
     year: "2026",
     title: "Timeless Fashion, Made for Everyday Elegance",
     tags: ["Stripe Payments", "Fashion Store"],
@@ -47,7 +61,7 @@ const PROJECTS = [
     link: "https://ecom-chi-olive.vercel.app/",
   },
   {
-    num: "05",
+    num: "06",
     year: "2026",
     title: "The marketplace, built for entrepreneurs",
     tags: ["Marketplace", "Community"],
@@ -55,15 +69,15 @@ const PROJECTS = [
     image: "/project4.png",
     link: " https://quickbay.in/",
   },
-  {
-    num: "06",
-    year: "2026",
-    title: "A playful storefront, imagined for modern brands",
-    tags: ["Editorial Design", "Brand Experience"],
-    desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
-    image: "/project3.png",
-    link: "https://babemoss-ui.vercel.app/",
-  },
+  // {
+  //   num: "06",
+  //   year: "2026",
+  //   title: "A playful storefront, imagined for modern brands",
+  //   tags: ["Editorial Design", "Brand Experience"],
+  //   desc: "A responsive landing page concept for a handcrafted plush toy brand, designed to capture warmth, and visual storytelling,",
+  //   image: "/project3.png",
+  //   link: "https://babemoss-ui.vercel.app/",
+  // },
 
   {
     num: "07",
