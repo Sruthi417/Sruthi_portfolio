@@ -60,15 +60,15 @@ const PROJECTS = [
     image: "/project2.webp",
     link: "https://ecom-chi-olive.vercel.app/",
   },
-  {
-    num: "06",
-    year: "2026",
-    title: "The marketplace, built for entrepreneurs",
-    tags: ["Marketplace", "Community"],
-    desc: "A centralized platform where entrepreneurs showcase products, connect with customers, and grow their brands beyond social media",
-    image: "/project4.webp",
-    link: " https://quickbay.in/",
-  },
+  // {
+  //   num: "06",
+  //   year: "2026",
+  //   title: "The marketplace, built for entrepreneurs",
+  //   tags: ["Marketplace", "Community"],
+  //   desc: "A centralized platform where entrepreneurs showcase products, connect with customers, and grow their brands beyond social media",
+  //   image: "/project4.webp",
+  //   link: " https://quickbay.in/",
+  // },
   // {
   //   num: "06",
   //   year: "2026",
@@ -80,7 +80,7 @@ const PROJECTS = [
   // },
 
   {
-    num: "07",
+    num: "06",
     year: "2026",
     title: "Designed Around the Way You Live",
     tags: ["Client Project", "Real Estate"],
